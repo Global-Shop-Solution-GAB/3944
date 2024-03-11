@@ -1,0 +1,500 @@
+Program.Sub.ScreenSU.Start
+gui.Form1..create
+gui.Form1..caption("Employee IT Asset Assignment")
+gui.Form1..size(11055,7590)
+gui.Form1..minx(0)
+gui.Form1..miny(0)
+gui.Form1..position(0,0)
+gui.Form1..event(unload,form1_unload)
+gui.Form1..alwaysontop(False)
+gui.Form1..fontname("Arial")
+gui.Form1..fontsize(8)
+gui.Form1..forecolor(0)
+gui.Form1..fontstyle(,,,,)
+gui.Form1..BackColor(-2147483633)
+gui.Form1..controlbox(True)
+gui.Form1..maxbutton(True)
+gui.Form1..minbutton(True)
+gui.Form1..mousepointer(0)
+gui.Form1..moveable(True)
+gui.Form1..sizeable(True)
+gui.Form1..ShowInTaskBar(True)
+gui.Form1..titlebar(True)
+gui.Form1.lblEmpNum.create(label,"Employee Number",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblEmpNum.defaultvalue("")
+gui.Form1.lblEmpNum.controlgroup(0)
+gui.Form1.txtEmpNum.create(textbox,"",True,1215,300,0,200,500,False,0,Arial,8,-2147483643,1)
+gui.Form1.txtEmpNum.defaultvalue("")
+gui.Form1.txtEmpNum.controlgroup(0)
+gui.Form1.lblEmpName.create(label,"Employee Name",True,1935,255,1,1775,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblEmpName.defaultvalue("")
+gui.Form1.lblEmpName.controlgroup(0)
+gui.Form1.txtEmpName.create(textbox,"",True,2415,300,0,1775,500,False,0,Arial,8,-2147483643,1)
+gui.Form1.txtEmpName.defaultvalue("")
+gui.Form1.txtEmpName.controlgroup(0)
+gui.Form1.gsfgEmp.create(gsflexgrid)
+gui.Form1.gsfgEmp.FixedRows(0)
+gui.Form1.gsfgEmp.FixedCols(0)
+gui.Form1.gsfgEmp.visible(True)
+gui.Form1.gsfgEmp.size(10380,3315)
+gui.Form1.gsfgEmp.zorder(0)
+gui.Form1.gsfgEmp.position(200,1600)
+gui.Form1.gsfgEmp.enabled(True)
+gui.Form1.txtITPart.create(textbox,"",True,2670,300,0,4800,500,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtITPart.defaultvalue("")
+gui.Form1.txtITPart.controlgroup(0)
+gui.Form1.lblITPart.create(label,"IT Part",True,1935,255,1,4800,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblITPart.defaultvalue("")
+gui.Form1.lblITPart.controlgroup(0)
+gui.Form1.cmdSearch.create(button)
+gui.Form1.cmdSearch.caption("^")
+gui.Form1.cmdSearch.visible(True)
+gui.Form1.cmdSearch.size(720,375)
+gui.Form1.cmdSearch.zorder(0)
+gui.Form1.cmdSearch.position(9845,445)
+gui.Form1.cmdSearch.enabled(True)
+gui.Form1.cmdSearch.fontname("Arial")
+gui.Form1.cmdSearch.fontsize(8)
+gui.Form1.cmdSearch.event(click,cmdsearch_click)
+gui.Form1.cmdSearch.defaultvalue("")
+gui.Form1.cmdSearch.controlgroup(0)
+gui.Form1.cmdAssign.create(button)
+gui.Form1.cmdAssign.caption("Assign")
+gui.Form1.cmdAssign.visible(True)
+gui.Form1.cmdAssign.size(1185,375)
+gui.Form1.cmdAssign.zorder(0)
+gui.Form1.cmdAssign.position(4800,1000)
+gui.Form1.cmdAssign.enabled(True)
+gui.Form1.cmdAssign.fontname("Arial")
+gui.Form1.cmdAssign.fontsize(8)
+gui.Form1.cmdAssign.event(click,cmdassign_click)
+gui.Form1.cmdAssign.defaultvalue("")
+gui.Form1.cmdAssign.controlgroup(0)
+gui.Form1.cmdUnAssign.create(button)
+gui.Form1.cmdUnAssign.caption("Unassign")
+gui.Form1.cmdUnAssign.visible(True)
+gui.Form1.cmdUnAssign.size(1050,375)
+gui.Form1.cmdUnAssign.zorder(0)
+gui.Form1.cmdUnAssign.position(200,5180)
+gui.Form1.cmdUnAssign.enabled(True)
+gui.Form1.cmdUnAssign.fontname("Arial")
+gui.Form1.cmdUnAssign.fontsize(8)
+gui.Form1.cmdUnAssign.event(click,cmdunassign_click)
+gui.Form1.cmdUnAssign.defaultvalue("")
+gui.Form1.cmdUnAssign.controlgroup(0)
+gui.Form1.lblITTag.create(label,"IT Tag ID",True,1935,255,1,7690,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblITTag.defaultvalue("")
+gui.Form1.lblITTag.controlgroup(0)
+gui.Form1.txtITTag.create(textbox,"",True,2025,315,0,7690,500,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtITTag.defaultvalue("")
+gui.Form1.txtITTag.controlgroup(0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.sRelation.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Set Script 2 button Name.
+F.Intrinsic.Control.If(V.Caller.Hook,=,15340)
+	V.Passed.000111.Set("IT Assign")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+	
+'variable for employee number
+V.Local.sEmpNum.Declare(String)
+'check to see if user is trying to enter from new employee screen
+F.Intrinsic.Control.If(V.Caller.Switches,=,"N")
+	'let user know only existing employees can get it parts
+	F.Intrinsic.UI.Msgbox("IT Assets can only be assigned to existing employees!","Employee IT Part Assignment")
+	'end program
+	F.Intrinsic.Control.End
+'end if
+F.Intrinsic.Control.EndIf
+'get employee number
+V.Local.sEmpNum.Set(V.Passed.000003)
+'pad employee number with 0
+F.Intrinsic.String.LPad(V.Local.sEmpNum,0,5,V.Local.sEmpNum)
+'open connection to database
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+'call buildstyle sub
+F.Intrinsic.Control.CallSub(Buildstyle)
+'Set text box with employee number that was passed
+Gui.Form1.txtEmpNum.Text(V.Local.sEmpNum)
+'set text box with employee name that was passed
+Gui.Form1.txtEmpName.Text(V.Passed.000005)
+'call sub loadfg
+F.Intrinsic.Control.CallSub(Loadfg)
+'Show form 1
+Gui.Form1..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+program.sub.cmdsearch_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsearch_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Query
+V.Local.sSql.Declare(String)
+'Variable for titles
+V.Local.sTitles.Declare(String)
+'Variable for widths
+V.Local.sWidths.Declare(String)
+'Variable for return value
+V.Local.sRet.Declare(String)
+'Set SQL Query
+V.Local.sSql.Set("Select IT_Part_Num, IT_Tag_ID, Relation_ID From GCG_3944_Part_Track Where (Employee_Num = ' ' or Employee_Num is Null)")
+'Split browser titles
+F.Intrinsic.String.Split("IT Part*!*IT Tag ID","*!*",V.Local.sTitles)
+'Split Browser column widths.
+F.Intrinsic.String.Split("2000*!*2000*!*0","*!*",V.Local.sWidths)
+'launch mini browser
+F.Intrinsic.UI.MiniBrowser("IT Part","conx",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,V.Local.sRet)
+'Check to see if user clicked cancel
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	'Exit sub
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'Else split return value
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'Save part number to text box
+	Gui.Form1.txtITPart.Text(V.Local.sRet(0).Trim)
+	'Save tag id to text box
+	Gui.Form1.txtITTag.Text(V.Local.sRet(1).Trim)
+	'Save rec id to variable
+	V.Global.sRelation.Set(V.Local.sRet(2).Trim)
+'End if
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsearch_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdsearch_click.end
+
+program.sub.form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'close connection to database
+F.ODBC.Connection!conx.Close
+'end program
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.form1_unload.end
+
+program.sub.cmdassign_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdassign_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Query
+V.Local.sSql.Declare(String)
+'Variable for row count
+V.Local.iRow.Declare(Long)
+'Get number of rows on the flexgrid
+V.Local.iRow.Set(V.Screen.Form1!gsfgEmp.Rows)
+'Subtract 1 from rows
+F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+
+'Check to see if part number and tag id text boxes are not blank
+f.Intrinsic.Control.If(v.Screen.Form1!txtITPart.Text,!=,"",and,v.Screen.Form1!txtITTag.Text,!=,"")
+	'Set SQL Query
+	F.Intrinsic.String.Concat("Select * From GCG_3944_Part_Track Where Relation_ID = '",V.Global.sRelation,"'",V.Local.sSql)
+	'Open connection to Records
+	F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+	'Set Employee number in the record
+	F.ODBC.conx!rst.Set!Employee_Num(V.Screen.Form1!txtEmpNum.Text)
+	'Set the Assigned date in the record
+	F.ODBC.conx!rst.Set!Assigned_Date(V.Ambient.Date)
+	'Update Record
+	F.ODBC.conx!rst.Update
+	Gui.Form1.gsfgEmp.TextMatrix(0,V.Local.iRow,V.Global.sRelation)
+	'Set the flexgrid with the part number
+	Gui.Form1.gsfgEmp.TextMatrix(1,V.Local.iRow,V.Screen.Form1!txtITPart.Text)
+	'Set the flexgrid wit the tag Id
+	Gui.Form1.gsfgEmp.TextMatrix(2,V.Local.iRow,V.Screen.Form1!txtITTag.Text)
+	'Set the flexgrid with the Date
+	Gui.Form1.gsfgEmp.TextMatrix(3,V.Local.iRow,V.Ambient.Date)
+	'Apply Style 2 to the row
+	Gui.Form1.gsfgEmp.ApplyStyle(V.Local.iRow,2)
+	'Add 2 rows to the flexgird
+	F.Intrinsic.Math.Add(V.Local.iRow,2,V.Local.iRow)
+	'Update row count on the flexgrid
+	Gui.Form1.gsfgEmp.Rows(V.Local.iRow)
+	'Gui.Form1.gsfgEmp.ApplyStyle(V.Local.iRow,2)
+	'Close connection to the record
+	F.ODBC.conx!rst.Close
+	'Clear SQL Variable.
+	V.Local.sSql.Set("")
+	'Set SQL variable
+	F.Intrinsic.String.Concat("Select * From GCG_3944_Part_Hist Where IT_Tag = '",V.Screen.Form1!txtITTag.Text,"'",V.Local.sSql)
+	'Open connection to record
+	F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+	'Add new record
+	F.ODBC.conx!rst.AddNew
+	'Set employee number in record
+	F.ODBC.conx!rst.Set!Emp_Num(V.Screen.Form1!txtEmpNum.Text)
+	'Set IT Tag ID in record
+	F.ODBC.conx!rst.Set!IT_Tag(V.Screen.Form1!txtITTag.Text)
+	'Set date issued in record
+	F.ODBC.conx!rst.Set!Date_Issued(V.Ambient.Date)
+	'Update record
+	F.ODBC.conx!rst.Update
+	'Close Connection
+	F.ODBC.conx!rst.Close
+
+	Gui.Form1.txtITPart.Text("")
+	Gui.Form1.txtITTag.Text("")
+
+
+F.Intrinsic.Control.Endif
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdassign_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdassign_click.end
+
+program.sub.cmdunassign_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdunassign_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Query
+V.Local.sSql.Declare(String)
+'Variable for check
+V.Local.sCheck.Declare(String)
+'Variable for TAg id
+V.Local.sTag.Declare(String)
+'variable for part number
+V.Local.sPart.Declare(String)
+'variable for row count
+V.Local.iRow.Declare(Long)
+'Variable for loop counter
+V.Local.iCount.Declare(Long)
+'Variable for rec id
+V.Local.iRelation.Declare(Long)
+'Variable for warranty length
+V.Local.iWLength.Declare(Long)
+'Variable for return value
+V.Local.iRet.Declare(Long)
+'Variable for warranty date
+V.Local.dWarranty.Declare(Date)
+'Variable for date
+V.Local.dDate.Declare(Date)
+
+'Get number of rows on flexgrid
+V.Local.iRow.Set(V.Screen.Form1!gsfgEmp.Rows)
+'Subtract title and blank row from count.
+F.Intrinsic.Math.Sub(V.Local.iRow,2,V.Local.iRow)
+
+'Loop through flexgrid
+F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRow,1)
+	'set the checkbox value
+	Gui.Form1.gsfgEmp.GetTextMatrix(4,V.Local.iCount,V.Local.sCheck)
+	'If checked
+	F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+		'get rec id
+		Gui.Form1.gsfgEmp.GetTextMatrix(0,V.Local.iCount,V.Local.iRelation)
+		'get tag id
+		Gui.Form1.gsfgEmp.GetTextMatrix(2,V.Local.iCount,V.Local.sTag)
+		'get part number
+		Gui.Form1.gsfgEmp.GetTextMatrix(1,V.Local.iCount,V.Local.sPart)
+		'set sql query
+		F.Intrinsic.String.Concat("Select * From GCG_3944_Part_Track Where Relation_ID = '",V.Local.iRelation,"'",V.Local.sSql)
+		'open connection to record
+		F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+		'set the employee number to blank in record
+		F.ODBC.conx!rst.Set!Employee_Num("")
+		'set the assigned date in record
+		F.ODBC.conx!rst.Set!Assigned_Date(V.Local.dDate)
+		'update record
+		F.ODBC.conx!rst.Update
+		'Close connection to record
+		F.ODBC.conx!rst.Close
+		'Clear sql query
+		V.Local.sSql.Set("")
+		'set sql query
+		F.Intrinsic.String.Concat("Select * From GCG_3944_Part_Hist Where IT_Tag = '",V.Local.sTag,"' and Date_UnIssued is NULL",V.Local.sSql)
+		'open connection to records
+		F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+		'set date unissued in record
+		F.ODBC.conx!rst.Set!Date_UnIssued(V.Ambient.Date)
+		'update record
+		F.ODBC.conx!rst.Update
+		'close connection
+		F.ODBC.conx!rst.Close
+		'remove style from row
+		Gui.Form1.gsfgEmp.RemoveStyle(V.Local.iCount)
+		'subtract 1 from count
+		F.Intrinsic.Math.Sub(V.Local.iCount,1,V.Local.iCount)
+		'delete row from flexgrid
+		Gui.Form1.gsfgEmp.DeleteRow(V.Local.iCount)
+		'subtract 1 from number of rows on flexgrid
+		F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+'		Gui.Form1.gsfgEmp.ApplyStyle(V.Local.iCount,2)
+	'end if
+	F.Intrinsic.Control.EndIf
+'move to next row
+F.Intrinsic.Control.Next(V.Local.iCount)
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdunassign_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdunassign_click.end
+
+Program.Sub.BuildStyle.Start
+F.Intrinsic.Control.SetErrorHandler("BuildStyle_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Set Flexgrid to have 5 columns with 2 rows.  one row will be fixed to hold the titles
+Gui.Form1.gsfgEmp.Cols(5)
+Gui.Form1.gsfgEmp.Rows(2)
+Gui.Form1.gsfgEmp.FixedRows(1)
+'Set the amount of space each column will take on the flexgrid
+Gui.Form1.gsfgEmp.SetColumnPercentages(".0:.30:.30:.20:.10")
+
+'Build Style
+'Column 0
+'Style 1
+Gui.Form1.gsfgEmp.BuildStyle(1,1,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,1,"Fontstyle","Bold",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,1,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgEmp.BuildStyle(2,1,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(2,1,"Format","Alignment",2)
+
+'Column 1
+'Style 1
+Gui.Form1.gsfgEmp.BuildStyle(1,2,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,2,"Fontstyle","Bold",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,2,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgEmp.BuildStyle(2,2,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(2,2,"Format","Alignment",2)
+
+'Column 2
+'Style 1
+Gui.Form1.gsfgEmp.BuildStyle(1,3,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,3,"Fontstyle","Bold",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,3,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgEmp.BuildStyle(2,3,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(2,3,"Format","Alignment",2)
+
+'Column 3
+'Style 1
+Gui.Form1.gsfgEmp.BuildStyle(1,4,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,4,"Fontstyle","Bold",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,4,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgEmp.BuildStyle(2,4,"Format","Alignment",4)
+Gui.Form1.gsfgEmp.BuildStyle(2,4,"Type","Checkbox",True)
+'Apply style 1 to row 0
+Gui.Form1.gsfgEmp.ApplyStyle(0,1)
+'Apply Style 2 to row 1
+Gui.Form1.gsfgEmp.ApplyStyle(1,2)
+'Set the titles for each column
+Gui.Form1.gsfgEmp.TextMatrix(1,0,"IT Part Number")
+Gui.Form1.gsfgEmp.TextMatrix(2,0,"IT Tag ID")
+Gui.Form1.gsfgEmp.TextMatrix(3,0,"Date Assigned")
+Gui.Form1.gsfgEmp.TextMatrix(4,0,"Unassign")
+'Exit sub
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("BuildStyle_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.BuildStyle.End
+
+Program.Sub.LoadFG.Start
+F.Intrinsic.Control.SetErrorHandler("LoadFG_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'variable for sql query
+V.Local.sSql.Declare(String)
+'set sql query
+F.Intrinsic.String.Concat("Select Relation_ID, IT_Part_Num, IT_Tag_ID, Assigned_Date From GCG_3944_Part_Track Where Employee_Num = '",V.Screen.Form1!txtEmpNum.Text,"'",V.Local.sSql)
+'open connection to record
+F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+'load flexgrid with the records
+Gui.Form1.gsfgEmp.LoadRecordset("conx!rst",2)
+F.ODBC.conx!rst.Close
+'exit sub
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("LoadFG_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.LoadFG.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_IT_Emp$}$SKT$}$4/25/2014
+Program.Sub.Comments.End
+
