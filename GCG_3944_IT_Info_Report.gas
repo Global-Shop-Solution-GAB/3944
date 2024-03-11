@@ -1,0 +1,1037 @@
+Program.Sub.ScreenSU.Start
+gui.Form1..create
+gui.Form1..caption("IT Asset Information Report")
+gui.Form1..size(9795,7605)
+gui.Form1..minx(0)
+gui.Form1..miny(0)
+gui.Form1..position(0,0)
+gui.Form1..event(unload,form1_unload)
+gui.Form1..alwaysontop(False)
+gui.Form1..fontname("Arial")
+gui.Form1..fontsize(8)
+gui.Form1..forecolor(0)
+gui.Form1..fontstyle(,,,,)
+gui.Form1..BackColor(-2147483633)
+gui.Form1..controlbox(True)
+gui.Form1..maxbutton(True)
+gui.Form1..minbutton(True)
+gui.Form1..mousepointer(0)
+gui.Form1..moveable(True)
+gui.Form1..sizeable(True)
+gui.Form1..ShowInTaskBar(True)
+gui.Form1..titlebar(True)
+gui.Form1.lblStartPart.create(label,"Starting IT Part Number",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblStartPart.defaultvalue("")
+gui.Form1.lblStartPart.controlgroup(0)
+gui.Form1.txtStartPart.create(textbox,"",True,2220,300,0,200,500,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtStartPart.defaultvalue("")
+gui.Form1.txtStartPart.controlgroup(0)
+gui.Form1.cmdStartSearch.create(button)
+gui.Form1.cmdStartSearch.caption("^")
+gui.Form1.cmdStartSearch.visible(True)
+gui.Form1.cmdStartSearch.size(645,375)
+gui.Form1.cmdStartSearch.zorder(0)
+gui.Form1.cmdStartSearch.position(2550,460)
+gui.Form1.cmdStartSearch.enabled(True)
+gui.Form1.cmdStartSearch.fontname("Arial")
+gui.Form1.cmdStartSearch.fontsize(8)
+gui.Form1.cmdStartSearch.event(click,cmdstartsearch_click)
+gui.Form1.cmdStartSearch.defaultvalue("")
+gui.Form1.cmdStartSearch.controlgroup(0)
+gui.Form1.lblEndPart.create(label,"Ending IT Part Number",True,1935,255,1,3625,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblEndPart.defaultvalue("")
+gui.Form1.lblEndPart.controlgroup(0)
+gui.Form1.txtEndPart.create(textbox,"",True,2250,300,0,3625,500,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtEndPart.defaultvalue("")
+gui.Form1.txtEndPart.controlgroup(0)
+gui.Form1.cmdEndSearch.create(button)
+gui.Form1.cmdEndSearch.caption("^")
+gui.Form1.cmdEndSearch.visible(True)
+gui.Form1.cmdEndSearch.size(855,375)
+gui.Form1.cmdEndSearch.zorder(0)
+gui.Form1.cmdEndSearch.position(6025,460)
+gui.Form1.cmdEndSearch.enabled(True)
+gui.Form1.cmdEndSearch.fontname("Arial")
+gui.Form1.cmdEndSearch.fontsize(8)
+gui.Form1.cmdEndSearch.event(click,cmdendsearch_click)
+gui.Form1.cmdEndSearch.defaultvalue("")
+gui.Form1.cmdEndSearch.controlgroup(0)
+gui.Form1.chkAllParts.create(checkbox)
+gui.Form1.chkAllParts.caption("All IT Parts")
+gui.Form1.chkAllParts.visible(True)
+gui.Form1.chkAllParts.size(1935,255)
+gui.Form1.chkAllParts.zorder(0)
+gui.Form1.chkAllParts.position(7325,200)
+gui.Form1.chkAllParts.enabled(True)
+gui.Form1.chkAllParts.alignment(0)
+gui.Form1.chkAllParts.fontname("Arial")
+gui.Form1.chkAllParts.fontsize(8)
+gui.Form1.chkAllParts.event(click,chkallparts_click)
+gui.Form1.chkAllParts.defaultvalue("")
+gui.Form1.chkAllParts.controlgroup(0)
+gui.Form1.chkHardware.create(checkbox)
+gui.Form1.chkHardware.caption("All Hardware IT Parts")
+gui.Form1.chkHardware.visible(True)
+gui.Form1.chkHardware.size(1935,255)
+gui.Form1.chkHardware.zorder(0)
+gui.Form1.chkHardware.position(7325,600)
+gui.Form1.chkHardware.enabled(True)
+gui.Form1.chkHardware.alignment(0)
+gui.Form1.chkHardware.fontname("Arial")
+gui.Form1.chkHardware.fontsize(8)
+gui.Form1.chkHardware.event(click,chkhardware_click)
+gui.Form1.chkHardware.defaultvalue("")
+gui.Form1.chkHardware.controlgroup(0)
+gui.Form1.chkSoftware.create(checkbox)
+gui.Form1.chkSoftware.caption("All Software IT Parts")
+gui.Form1.chkSoftware.visible(True)
+gui.Form1.chkSoftware.size(1935,255)
+gui.Form1.chkSoftware.zorder(0)
+gui.Form1.chkSoftware.position(7325,1000)
+gui.Form1.chkSoftware.enabled(True)
+gui.Form1.chkSoftware.alignment(0)
+gui.Form1.chkSoftware.fontname("Arial")
+gui.Form1.chkSoftware.fontsize(8)
+gui.Form1.chkSoftware.event(click,chksoftware_click)
+gui.Form1.chkSoftware.defaultvalue("")
+gui.Form1.chkSoftware.controlgroup(0)
+gui.Form1.cmdAdd.create(button)
+gui.Form1.cmdAdd.caption("Add")
+gui.Form1.cmdAdd.visible(True)
+gui.Form1.cmdAdd.size(855,375)
+gui.Form1.cmdAdd.zorder(0)
+gui.Form1.cmdAdd.position(200,1300)
+gui.Form1.cmdAdd.enabled(True)
+gui.Form1.cmdAdd.fontname("Arial")
+gui.Form1.cmdAdd.fontsize(8)
+gui.Form1.cmdAdd.event(click,cmdadd_click)
+gui.Form1.cmdAdd.defaultvalue("")
+gui.Form1.cmdAdd.controlgroup(0)
+gui.Form1.gsfgInfoRep.create(gsflexgrid)
+gui.Form1.gsfgInfoRep.FixedRows(0)
+gui.Form1.gsfgInfoRep.FixedCols(0)
+gui.Form1.gsfgInfoRep.visible(True)
+gui.Form1.gsfgInfoRep.size(9195,3645)
+gui.Form1.gsfgInfoRep.zorder(0)
+gui.Form1.gsfgInfoRep.position(130,1900)
+gui.Form1.gsfgInfoRep.enabled(True)
+gui.Form1.chkAssigns.create(checkbox)
+gui.Form1.chkAssigns.caption("Add Assignment History")
+gui.Form1.chkAssigns.visible(True)
+gui.Form1.chkAssigns.size(2355,255)
+gui.Form1.chkAssigns.zorder(0)
+gui.Form1.chkAssigns.position(200,5800)
+gui.Form1.chkAssigns.enabled(True)
+gui.Form1.chkAssigns.alignment(0)
+gui.Form1.chkAssigns.fontname("Arial")
+gui.Form1.chkAssigns.fontsize(8)
+gui.Form1.chkAssigns.defaultvalue("")
+gui.Form1.chkAssigns.controlgroup(0)
+gui.Form1.cmdPrint.create(button)
+gui.Form1.cmdPrint.caption("Print")
+gui.Form1.cmdPrint.visible(True)
+gui.Form1.cmdPrint.size(855,375)
+gui.Form1.cmdPrint.zorder(0)
+gui.Form1.cmdPrint.position(1295,6300)
+gui.Form1.cmdPrint.enabled(True)
+gui.Form1.cmdPrint.fontname("Arial")
+gui.Form1.cmdPrint.fontsize(8)
+gui.Form1.cmdPrint.event(click,cmdprint_click)
+gui.Form1.cmdPrint.defaultvalue("")
+gui.Form1.cmdPrint.controlgroup(0)
+gui.Form1.cmdDelete.create(button)
+gui.Form1.cmdDelete.caption("Remove")
+gui.Form1.cmdDelete.visible(True)
+gui.Form1.cmdDelete.size(855,375)
+gui.Form1.cmdDelete.zorder(0)
+gui.Form1.cmdDelete.position(200,6300)
+gui.Form1.cmdDelete.enabled(True)
+gui.Form1.cmdDelete.fontname("Arial")
+gui.Form1.cmdDelete.fontsize(8)
+gui.Form1.cmdDelete.event(click,cmddelete_click)
+gui.Form1.cmdDelete.defaultvalue("")
+gui.Form1.cmdDelete.controlgroup(0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uITPart.Define("PartNum",String,IT_Part_Num)
+Variable.UDT.uITPart.Define("TagID",String,IT_Tag_ID)
+Variable.UDT.uITPart.Define("CurrAssign",String,Employee_Num)
+Variable.UDT.uITPart.Define("ProdKey",String,Text_Line1)
+Variable.UDT.uITPart.Define("AssignHis",String)
+Variable.UDT.uITPart.Define("BIRunID",Long)
+Variable.UDT.uITPart.Define("Flag",String)
+Variable.UDT.uITPart.Define("Model",String)
+Variable.UDT.uITPart.Define("Make",String)
+Variable.uGlobal.uITPart.Declare("uITPart")
+
+Variable.UDT.uHistory.Define("PartNum",String)
+Variable.UDT.uHistory.Define("TagID",String)
+Variable.UDT.uHistory.Define("CurrAssign",String)
+Variable.UDT.uHistory.Define("ProdKey",String)
+Variable.UDT.uHistory.Define("AssignHis",String)
+Variable.UDT.uHistory.Define("BIRunID",Long)
+Variable.UDT.uHistory.Define("Flag",String)
+Variable.UDT.uHistory.Define("Model",String)
+Variable.UDT.uHistory.Define("Make",String)
+Variable.uGlobal.uHistory.Declare("uHistory")
+
+Variable.Global.iBIRunID.Declare(Long,0)
+Variable.Global.iBILogID.Declare(Long,0)
+Variable.UDT.uAssetRep.Define("sPartNum",String,Part_Num)
+Variable.UDT.uAssetRep.Define("sTagID",String,Tag_ID)
+Variable.UDT.uAssetRep.Define("sCurrAssign",String,Curr_Assign)
+Variable.UDT.uAssetRep.Define("sProdKey",String,ProdKey)
+Variable.UDT.uAssetRep.Define("sAssignHis",String,Assign_His)
+Variable.UDT.uAssetRep.Define("iBiRunID",Long,BIRUNID)
+Variable.UDT.uAssetRep.Define("Flag",String,Flag)
+Variable.UDT.uAssetRep.Define("sModel",String,Model)
+Variable.UDT.uAssetRep.Define("sMake",String,Make)
+
+Variable.uGlobal.uAssetRep.Declare("uAssetRep")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Open connection to database
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+'Set UDTS with no values added
+V.uGlobal.uHistory.Redim(-1,-1)
+V.uGlobal.uITPart.Redim(-1,-1)
+
+'Call sub Buildstyle
+F.Intrinsic.Control.CallSub(Buildstyle)
+'Show Form1
+Gui.Form1..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+program.sub.cmdstartsearch_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdstartsearch_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'variable for SQL Query
+V.Local.sSql.Declare(String)
+'Variable for titles
+V.Local.sTitles.Declare(String)
+'Variable for widths
+V.Local.sWidths.Declare(String)
+'Variable for return value
+V.Local.sRet.Declare(String)
+'Set SQL Query
+V.Local.sSql.Set("Select Distinct IT_Part_Num From GCG_3944_Part_Track")
+'Set Titles
+V.Local.sTitles.Set("IT Part Number")
+'Set Widths
+V.Local.sWidths.Set("2000")
+'Launch mini browser
+F.Intrinsic.UI.MiniBrowser("IT Part","conx",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,V.Local.sRet)
+'Check to see if the user clicks Cancel
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	'Exit sub
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'Else split the return value
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'Save starting part number to starting number text box
+	Gui.Form1.txtStartPart.Text(V.Local.sRet(0).Trim)
+	'Save starting part number to ending number text box
+	Gui.Form1.txtEndPart.Text(V.Local.sRet(0).Trim)
+'End if
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdstartsearch_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdstartsearch_click.end
+
+program.sub.cmdendsearch_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdendsearch_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Query
+V.Local.sSql.Declare(String)
+'Variable to hold titles for browser
+V.Local.sTitles.Declare(String)
+'Variable to hold widths of columns on browser
+V.Local.sWidths.Declare(String)
+'Variable to hold the return value
+V.Local.sRet.Declare(String)
+'Set the SQL Query
+V.Local.sSql.Set("Select Distinct IT_Part_Num From GCG_3944_Part_Track")
+'Set the Titles.
+V.Local.sTitles.Set("IT Part Number")
+'Set the Widths.
+V.Local.sWidths.Set("2000")
+'Launch minibrowser
+F.Intrinsic.UI.MiniBrowser("IT Part","conx",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,V.Local.sRet)
+'Check to see if the user clicked cancel
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	'If yes exit sub.
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'Else split the return value
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'Save the part number to the text box.
+	Gui.Form1.txtEndPart.Text(V.Local.sRet(0).Trim)
+'End if.
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdendsearch_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdendsearch_click.end
+
+program.sub.cmdadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to hold row count
+V.Local.iRow.Declare(Long)
+'Get the number of rows in the flexgrid
+V.Local.iRow.Set(V.Screen.Form1!gsfgInfoRep.Rows)
+'subtract 1 from the count.
+F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+'Check to see if the starting part text box is not empty.
+F.Intrinsic.Control.If(V.Screen.Form1!txtStartPart.Text,!=,"")
+	'Save the starting part to the flexgrid
+	Gui.Form1.gsfgInfoRep.TextMatrix(0,V.Local.iRow,V.Screen.Form1!txtStartPart.Text)
+	'Save the ending part to the flexgrid.
+	Gui.Form1.gsfgInfoRep.TextMatrix(1,V.Local.iRow,V.Screen.Form1!txtEndPart.Text)
+	'Apply style 2 to the row.
+	Gui.Form1.gsfgInfoRep.ApplyStyle(V.Local.iRow,2)
+	'Add 2 to the row count.
+	F.Intrinsic.Math.Add(V.Local.iRow,2,V.Local.iRow)
+	'update the flexgrid so there will be a blank row at the bottom
+	Gui.Form1.gsfgInfoRep.Rows(V.Local.iRow)
+'End if.
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdadd_click.end
+
+program.sub.cmdprint_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdprint_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to hold SQL Query
+V.Local.sSql.Declare(String)
+'Variable to hold check
+V.Local.sCheck.Declare(String)
+'Variable to hold Starting part.
+V.Local.sStart.Declare(String)
+'Variable to hold ending part.
+V.Local.sEnd.Declare(String)
+'Variable to hold part number
+V.Local.sPart.Declare(String)
+'Variable for loop counter
+V.Local.iCount.Declare(Long)
+'Variable for loop counter
+V.Local.iCount2.Declare(Long)
+'Variable for row count.
+V.Local.iRow.Declare(Long)
+
+'Get BIRUNID
+F.Global.BI.GetRunID(V.Global.iBIRunID)
+'Start logging
+F.Global.BI.StartLogging(V.Global.iBIRunID,-1,-1,"",V.Global.iBILogID)
+
+'Get number of rows in flexgrid
+V.Local.iRow.Set(V.Screen.Form1!gsfgInfoRep.Rows)
+'Subtract the title and blank row from the count.
+F.Intrinsic.Math.Sub(V.Local.iRow,2,V.Local.iRow)
+'set the value of the case statement.
+F.Intrinsic.String.Concat(V.Screen.Form1!chkAllParts.Value,V.Screen.Form1!chkHardware.Value,V.Screen.Form1!chkSoftware.Value,V.Local.sCheck)
+
+'perform a case statement base on what scheck is.
+F.Intrinsic.Control.SelectCase(V.Local.sCheck)
+	'Case All IT Parts here
+	F.Intrinsic.Control.Case(100)
+		'Set SQL Query
+		V.Local.sSql.Set("Select GCG_3944_Part_Track.IT_Part_Num, GCG_3944_Part_Track.IT_Tag_ID, GCG_3944_Part_Track.Employee_Num,  Extra_Text.Text_Line1 From GCG_3944_Part_Track Join Extra_Text on GCG_3944_Part_Track.IT_Part_Num=Extra_Text.Part")
+		'open Connection to record
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+		'Redim the UDT
+		V.uGlobal.uITPart.Redim(0,0)
+		'Load UDT from recordset.
+		F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","v.uGlobal.uITPart",False)
+		'Close Connection to the record
+		F.ODBC.conx!rst.Close
+
+		F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uITPart.UBound,1)
+			V.Local.sPart.Set(V.uGlobal.uITPart(v.Local.iCount)!PartNum.Trim)
+			V.Local.sSql.Set("Select Inventory_MSTR.Description, Inventory_MST2.Description_2 From Inventory_MSTR Join Inventory_MST2 on Inventory_MSTR.Part = Inventory_MST2.Part where Inventory_MSTR.Part = '")
+			F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sPart.Trim,"'",V.Local.sSql)
+			'Open Connection
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+			'Set the Make value in the udt.
+			V.uGlobal.uITPart(v.Local.iCount)!Make.Set(V.ODBC.conx!rst.FieldVal!Description)
+			V.uGlobal.uITPart(v.Local.iCount)!Model.Set(V.ODBC.conx!rst.FieldVal!Description_2)
+			F.ODBC.conx!rst.Close
+
+		F.Intrinsic.Control.Next(V.Local.iCount)
+		F.Intrinsic.Control.CallSub(Nohistory)
+		F.Intrinsic.Control.CallSub(History)
+
+	'case All Hardware here
+	F.Intrinsic.Control.Case(010)
+		'Set SQL Query
+		V.Local.sSql.Set("Select GCG_3944_Part_Track.IT_Part_Num, GCG_3944_Part_Track.IT_Tag_ID, GCG_3944_Part_Track.Employee_Num,  Extra_Text.Text_Line1 From GCG_3944_Part_Track Join Extra_Text on GCG_IT_Part_Tracking.IT_Part_Num=Extra_Text.Part Where GCG_3944_Part_Track.IT_Part_Num Like 'HDWR%'")
+
+		'Open Connection to Record
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+		'Redim udt.
+		V.uGlobal.uITPart.Redim(0,0)
+		'Load udt from record
+		F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","v.uGlobal.uITPart",False)
+		'Close connection to record.
+		F.ODBC.conx!rst.Close
+		
+		F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uITPart.UBound,1)
+			V.Local.sPart.Set(V.uGlobal.uITPart(v.Local.iCount)!PartNum.Trim)
+			V.Local.sSql.Set("Select Inventory_MSTR.Description, Inventory_MST2.Description_2 From Inventory_MSTR Join Inventory_MST2 on Inventory_MSTR.Part = Inventory_MST2.Part where Inventory_MSTR.Part = '")
+			F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sPart.Trim,"'",V.Local.sSql)
+			'Open Connection
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+			'Set the Make value in the udt.
+			V.uGlobal.uITPart(v.Local.iCount)!Make.Set(V.ODBC.conx!rst.FieldVal!Description)
+			V.uGlobal.uITPart(v.Local.iCount)!Model.Set(V.ODBC.conx!rst.FieldVal!Description_2)
+			F.ODBC.conx!rst.Close
+
+		F.Intrinsic.Control.Next(V.Local.iCount)
+
+		
+		F.Intrinsic.Control.CallSub(Nohistory)
+		F.Intrinsic.Control.CallSub(History)
+
+	'Case All Software here
+	F.Intrinsic.Control.Case(001)
+		'Set SQL Query
+		V.Local.sSql.Set("Select GCG_3944_Part_Track.IT_Part_Num, GCG_3944_Part_Track.IT_Tag_ID, GCG_3944_Part_Track.Employee_Num,  Extra_Text.Text_Line1 From GCG_3944_Part_Track Join Extra_Text on GCG_3944_Part_Track.IT_Part_Num=Extra_Text.Part Where GCG_3944_Part_Track.IT_Part_Num Like 'SFWR%'")
+		'Open connection to record
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+		'Redim udt
+		V.uGlobal.uITPart.Redim(0,0)
+		'Load udt from recordset
+		F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","v.uGlobal.uITPart",False)
+		'Close connection to record
+		F.ODBC.conx!rst.Close
+
+		F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uITPart.UBound,1)
+			V.Local.sPart.Set(V.uGlobal.uITPart(v.Local.iCount)!PartNum.Trim)
+			V.Local.sSql.Set("Select Inventory_MSTR.Description, Inventory_MST2.Description_2 From Inventory_MSTR Join Inventory_MST2 on Inventory_MSTR.Part = Inventory_MST2.Part where Inventory_MSTR.Part = '")
+			F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sPart.Trim,"'",V.Local.sSql)
+			'Open Connection
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+			'Set the Make value in the udt.
+			V.uGlobal.uITPart(v.Local.iCount)!Make.Set(V.ODBC.conx!rst.FieldVal!Description)
+			V.uGlobal.uITPart(v.Local.iCount)!Model.Set(V.ODBC.conx!rst.FieldVal!Description_2)
+			F.ODBC.conx!rst.Close
+
+		F.Intrinsic.Control.Next(V.Local.iCount)
+
+		F.Intrinsic.Control.CallSub(Nohistory)
+		F.Intrinsic.Control.CallSub(History)
+
+	'Take from the selections on the flexgrid
+	F.Intrinsic.Control.CaseElse
+		'Loop through Flexgrid
+		F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRow,1)
+			'Get staring Part
+			Gui.Form1.gsfgInfoRep.GetTextMatrix(0,V.Local.iCount,V.Local.sStart)
+			'Get ending Part
+			Gui.Form1.gsfgInfoRep.GetTextMatrix(1,V.Local.iCount,V.Local.sEnd)
+			'Set SQL Query
+			V.Local.sSql.Set("Select GCG_3944_Part_Track.IT_Part_Num, GCG_3944_Part_Track.IT_Tag_ID, GCG_3944_Part_Track.Employee_Num,  Extra_Text.Text_Line1 From GCG_3944_Part_Track Join Extra_Text on GCG_3944_Part_Track.IT_Part_Num=Extra_Text.Part Where GCG_3944_Part_Track.IT_Part_Num Between '")
+			F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sStart,"' and '",V.Local.sEnd,"'",V.Local.sSql)
+			'Open connection to record set
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+				'Loop till EOF is true
+				F.Intrinsic.Control.DoUntil(V.ODBC.conx!rst.EOF,=,True)
+
+					'Check to see if udt has values in it
+					F.Intrinsic.Control.If(V.uGlobal.uITPart.UBound,=,-1)
+						'If no initialize
+						V.uGlobal.uITPart.Redim(0,0)
+					F.Intrinsic.Control.Else
+						'Else Add 1
+						F.Intrinsic.Math.Add(V.uGlobal.uITPart.UBound,1,V.Local.iCount2)
+						'Redim and preserve udt.
+						V.uGlobal.uITPart.RedimPreserve(0,V.Local.iCount2)
+					'End if	
+					F.Intrinsic.Control.EndIf
+					'Set part number in udt
+					V.uGlobal.uITPart(v.Local.iCount2)!PartNum.Set(V.ODBC.conx!rst.FieldVal!IT_Part_Num)
+					'Set tag id in udt
+					V.uGlobal.uITPart(v.Local.iCount2)!TagID.Set(V.ODBC.conx!rst.FieldVal!IT_Tag_ID)
+					'Set current assignment in udt
+					V.uGlobal.uITPart(v.Local.iCount2)!CurrAssign.Set(V.ODBC.conx!rst.FieldVal!Employee_Num)
+					'Set product key in udt
+					V.uGlobal.uITPart(v.Local.iCount2)!ProdKey.Set(V.ODBC.conx!rst.FieldVal!Text_Line1)
+					'Move to next record
+					F.ODBC.conx!rst.MoveNext
+				'Loop through all the records
+				F.Intrinsic.Control.Loop
+			'Close connection
+			F.ODBC.conx!rst.Close
+		'Loop to next row of flexgrid
+		F.Intrinsic.Control.Next(V.Local.iCount)
+
+			F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uITPart.UBound,1)
+			V.Local.sPart.Set(V.uGlobal.uITPart(v.Local.iCount)!PartNum.Trim)
+			V.Local.sSql.Set("Select Inventory_MSTR.Description, Inventory_MST2.Description_2 From Inventory_MSTR Join Inventory_MST2 on Inventory_MSTR.Part = Inventory_MST2.Part where Inventory_MSTR.Part = '")
+			F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sPart.Trim,"'",V.Local.sSql)
+			'Open Connection
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+			'Set the Make value in the udt.
+			V.uGlobal.uITPart(v.Local.iCount)!Make.Set(V.ODBC.conx!rst.FieldVal!Description)
+			V.uGlobal.uITPart(v.Local.iCount)!Model.Set(V.ODBC.conx!rst.FieldVal!Description_2)
+			F.ODBC.conx!rst.Close
+
+		F.Intrinsic.Control.Next(V.Local.iCount)
+
+		F.Intrinsic.Control.CallSub(Nohistory)
+		F.Intrinsic.Control.CallSub(History)
+'End Select statement
+F.Intrinsic.Control.EndSelect
+
+'Set SQL Query
+V.Local.sSql.Set("Select * From GCG_3944_Asset_Rep")
+'Open connection to record
+F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+'Redim and preserve udt
+V.uGlobal.uITPart.RedimPreserve(0,V.uGlobal.uITPart.UBound)
+
+V.Local.sCheck.Set(V.Screen.Form1!chkAssigns.Value)
+
+F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+	'Copy udt
+	F.Intrinsic.Variable.UDTCopy(V.uGlobal.uHistory,V.uGlobal.uITPart,True)
+F.Intrinsic.Control.EndIf
+'Set field reference
+F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uITPart!BIRunID,"BIRUNID")
+'Set value to birunid
+F.Intrinsic.Variable.UDTSetMemberValue(V.uGlobal.uITPart!BIRunID,V.Global.iBIRunID)
+'Copy udt
+F.Intrinsic.Variable.UDTCopy(V.uGlobal.uITPart,V.uGlobal.uAssetRep,False)
+'Save udt to record
+F.Intrinsic.Variable.SaveUDTToRecordset("conx","rst","v.uGlobal.uAssetRep")
+'Close connection to record
+F.ODBC.conx!rst.Close
+'call sub callbi
+F.Intrinsic.Control.CallSub(Callbi)
+'Call sub form1_unload
+F.Intrinsic.Control.CallSub(Form1_unload)
+'Exit sub
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmdprint_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdprint_click.end
+
+program.sub.form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Close Connection
+F.ODBC.Connection!conx.Close
+'End program.
+F.Intrinsic.Control.End
+
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.form1_unload.end
+
+Program.Sub.BuildStyle.Start
+F.Intrinsic.Control.SetErrorHandler("BuildStyle_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Set the flexgrid to have 3 columns with 2 rows.  One of the rows will be fixed to hold the titles.
+Gui.Form1.gsfgInfoRep.Cols(3)
+Gui.Form1.gsfgInfoRep.Rows(2)
+Gui.Form1.gsfgInfoRep.FixedRows(1)
+'Set the amount of space each column will take up in the flexgrid.
+Gui.Form1.gsfgInfoRep.SetColumnPercentages(".40:.40:.20")
+
+'Build Style
+'Column 0
+'Style 1
+Gui.Form1.gsfgInfoRep.BuildStyle(1,0,"Type","Locked",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(1,0,"Fontstyle","Bold",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(1,0,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgInfoRep.BuildStyle(2,0,"Type","Locked",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(2,0,"Format","Alignment",2)
+
+'Column 1
+'Style1
+Gui.Form1.gsfgInfoRep.BuildStyle(1,1,"Type","Locked",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(1,1,"Fontstyle","Bold",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(1,1,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgInfoRep.BuildStyle(2,1,"Type","Locked",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(2,1,"Format","Alignment",2)
+
+'Column 2
+'Style 1
+Gui.Form1.gsfgInfoRep.BuildStyle(1,2,"Type","Locked",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(1,2,"Fontstyle","Bold",True)
+Gui.Form1.gsfgInfoRep.BuildStyle(1,2,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgInfoRep.BuildStyle(2,2,"Format","Alignment",2)
+Gui.Form1.gsfgInfoRep.BuildStyle(2,2,"Type","Checkbox",True)
+
+'Apply Style 1 to row 0
+Gui.Form1.gsfgInfoRep.ApplyStyle(0,1)
+'Apply Style 2 to row 1
+Gui.Form1.gsfgInfoRep.ApplyStyle(1,2)
+
+'Set the titles for the Flexgrid.
+Gui.Form1.gsfgInfoRep.TextMatrix(0,0,"Starting Part")
+Gui.Form1.gsfgInfoRep.TextMatrix(1,0,"Ending Part")
+Gui.Form1.gsfgInfoRep.TextMatrix(2,0,"Remove")
+'Exit sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("BuildStyle_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.BuildStyle.End
+
+program.sub.cmddelete_click.start
+F.Intrinsic.Control.SetErrorHandler("cmddelete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for check box on flexgrid.
+V.Local.sCheck.Declare(String)
+'Variable for row count.
+V.Local.iRow.Declare(Long)
+'Variable for loop counter.
+V.Local.iCount.Declare(Long)
+'Get number of rows in the flexgrid.
+V.Local.iRow.Set(V.Screen.Form1!gsfgInfoRep.Rows)
+'subtract 2 from the row count.  this removes the title and the blank row.
+F.Intrinsic.Math.Sub(V.Local.iRow,2,V.Local.iRow)
+'Loop through the flexgrid.
+F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRow,1)
+	'Get the value in the check box on grid.
+	Gui.Form1.gsfgInfoRep.GetTextMatrix(2,V.Local.iCount,V.Local.sCheck)
+	'Check to see if it is checked.
+	F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+		'if checked remove style from the row
+		Gui.Form1.gsfgInfoRep.RemoveStyle(V.Local.iCount)
+		'Subtract 1 from the loop counter
+		F.Intrinsic.Math.Sub(V.Local.iCount,1,V.Local.iCount)
+		'Delete the row from the flexgrid.
+		Gui.Form1.gsfgInfoRep.DeleteRow(V.Local.iCount)
+		'Subtract 1 from the number of rows on the flexgrid.
+		F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+	'End if
+	F.Intrinsic.Control.EndIf
+'Loop to next row.
+F.Intrinsic.Control.Next(V.Local.iCount)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmddelete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmddelete_click.end
+
+program.sub.chkallparts_click.start
+F.Intrinsic.Control.SetErrorHandler("chkallparts_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for check
+V.Local.sCheck.Declare(String)
+'Set the variable if the box is checked.
+V.Local.sCheck.Set(V.Screen.Form1!chkAllParts.Value)
+'if Checked is true.
+F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+	'Disable the hardware check box
+	Gui.Form1.chkHardware.Enabled(False)
+	'Disable the software check box.
+	Gui.Form1.chkSoftware.Enabled(False)
+	'Hide the flexgrid.
+	Gui.Form1.gsfgInfoRep.Visible(False)
+	'Disable the starting part text box
+	Gui.Form1.txtStartPart.Enabled(False)
+	'Disable the ending part text box.
+	Gui.Form1.txtEndPart.Enabled(False)
+	'Disable the starting part search button
+	Gui.Form1.cmdStartSearch.Enabled(False)
+	'Disable the ending part search button.
+	Gui.Form1.cmdEndSearch.Enabled(False)
+F.Intrinsic.Control.Else
+	'Else Enable the hardware check box.
+	Gui.Form1.chkHardware.Enabled(True)
+	'Enable the software check box
+	Gui.Form1.chkSoftware.Enabled(True)
+	'make the flexgrid visible.
+	Gui.Form1.gsfgInfoRep.Visible(True)
+	'Enable the starting part text box.
+	Gui.Form1.txtStartPart.Enabled(True)
+	'Enable the ending part text box.
+	Gui.Form1.txtEndPart.Enabled(True)
+	'Enable the starting part search button
+	Gui.Form1.cmdStartSearch.Enabled(True)
+	'Enable the ending part search button.
+	Gui.Form1.cmdEndSearch.Enabled(True)
+'End if.
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("chkallparts_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.chkallparts_click.end
+
+program.sub.chkhardware_click.start
+F.Intrinsic.Control.SetErrorHandler("chkhardware_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for check.
+V.Local.sCheck.Declare(String)
+'Set the value of the check
+V.Local.sCheck.Set(V.Screen.Form1!chkHardware.Value)
+'Check to see if the box is checked.
+F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+	'Disable the all parts check box
+	Gui.Form1.chkAllParts.Enabled(False)
+	'Disable the software check box
+	Gui.Form1.chkSoftware.Enabled(False)
+	'Hide the flexgrid.
+	Gui.Form1.gsfgInfoRep.Visible(False)
+	'Disable the starting part text box
+	Gui.Form1.txtStartPart.Enabled(False)
+	'Disable the ending part text box.
+	Gui.Form1.txtEndPart.Enabled(False)
+	'Disable the starting part search button
+	Gui.Form1.cmdStartSearch.Enabled(False)
+	'Disable the ending part search button.
+	Gui.Form1.cmdEndSearch.Enabled(False)
+F.Intrinsic.Control.Else
+	'Else Enable the hardware check box.
+	Gui.Form1.chkAllParts.Enabled(True)
+	'Enable the software check box
+	Gui.Form1.chkSoftware.Enabled(True)
+	'make the flexgrid visible.
+	Gui.Form1.gsfgInfoRep.Visible(True)
+	'Enable the starting part text box.
+	Gui.Form1.txtStartPart.Enabled(True)
+	'Enable the ending part text box.
+	Gui.Form1.txtEndPart.Enabled(True)
+	'Enable the starting part search button
+	Gui.Form1.cmdStartSearch.Enabled(True)
+	'Enable the ending part search button.
+	Gui.Form1.cmdEndSearch.Enabled(True)
+'End if.
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("chkhardware_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.chkhardware_click.end
+
+program.sub.chksoftware_click.start
+F.Intrinsic.Control.SetErrorHandler("chksoftware_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to hold the value of the check box.
+V.Local.sCheck.Declare(String)
+'Set the value of the check box.
+V.Local.sCheck.Set(V.Screen.Form1!chkSoftware.Value)
+'See if the box is checked.
+F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+	'If it is disable the allpart check box
+	Gui.Form1.chkAllParts.Enabled(False)
+	'Disable the hardware check box
+	Gui.Form1.chkHardware.Enabled(False)
+	'hid the flexgrid.
+	Gui.Form1.gsfgInfoRep.Visible(False)
+	'Disable the starting part text box
+	Gui.Form1.txtStartPart.Enabled(False)
+	'Disable the ending part text box.
+	Gui.Form1.txtEndPart.Enabled(False)
+	'Disable the starting part search button
+	Gui.Form1.cmdStartSearch.Enabled(False)
+	'Disable the ending part search button.
+	Gui.Form1.cmdEndSearch.Enabled(False)
+F.Intrinsic.Control.Else
+	'Else enable the all parts check box
+	Gui.Form1.chkAllParts.Enabled(True)
+	'Enable the hardware check box
+	Gui.Form1.chkHardware.Enabled(True)
+	'Make the flexgrid visible.
+	Gui.Form1.gsfgInfoRep.Visible(True)
+	'Enable the starting part text box.
+	Gui.Form1.txtStartPart.Enabled(True)
+	'Enable the ending part text box.
+	Gui.Form1.txtEndPart.Enabled(True)
+	'Enable the starting part search button
+	Gui.Form1.cmdStartSearch.Enabled(True)
+	'Enable the ending part search button.
+	Gui.Form1.cmdEndSearch.Enabled(True)
+'End if.
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("chksoftware_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.chksoftware_click.end
+
+Program.Sub.CallBI.Start
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable that will hold the String "BIRUNID"
+V.Local.sParam.Declare(String)
+'Varialbe to hold the Birunid number.
+V.Local.sVal.Declare(String)
+'Stop logging
+F.Global.BI.StopLogging(V.Global.iBILogID)
+'Set the Parameter
+V.Local.sParam.Set("BIRUNID")
+'Set the Value
+V.Local.sVal.Set(V.Global.iBIRunID)
+'Run the report.
+F.Global.BI.RunReportPreProcessor(V.Global.iBIRunID,V.Global.iBILogID,V.Local.sParam,V.Local.sVal,"",-1,True,"",-1,"",-1,"","",V.Global.iBIRunID)
+'Exit the sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CallBI.End
+
+Program.Sub.History.Start
+F.Intrinsic.Control.SetErrorHandler("History_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to hold SQL Query
+V.Local.sSql.Declare(String)
+'Variable to hold check
+V.Local.sCheck.Declare(String)
+'Variable for loop counter
+V.Local.iCount.Declare(Long)
+'Variable for loop counter
+V.Local.iCount2.Declare(Long)
+
+'Set Check to see if assignment history value.
+V.Local.sCheck.Set(V.Screen.Form1!chkAssigns.Value)
+'If box is checked.
+F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+	'Loop through UDT
+	F.Intrinsic.Control.For(V.Local.iCount2,0,V.uGlobal.uITPart.UBound,1)
+		'Set SQL Query
+		V.Local.sSql.set("Select IT_Tag, Emp_Num From GCG_3944_Part_Hist Where Date_UnIssued is Not Null and IT_Tag = '")
+			F.Intrinsic.String.Concat(V.Local.sSql,V.uGlobal.uITPart(v.Local.iCount2)!TagID,"'",V.Local.sSql)
+			'Open connection to record
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+			'Loop through record till eof is true.
+			F.Intrinsic.Control.DoUntil(V.ODBC.conx!rst.EOF,=,True)
+				'Check to see if UDT has values
+				F.Intrinsic.Control.If(V.uGlobal.uHistory.UBound,=,-1)
+					'If no initialize
+					V.uGlobal.uHistory.Redim(0,0)
+				F.Intrinsic.Control.Else
+					'Else add 1 to UDT
+					F.Intrinsic.Math.Add(V.uGlobal.uHistory.UBound,1,V.Local.iCount)
+					'Redim UDT.
+					V.uGlobal.uHistory.RedimPreserve(0,V.Local.iCount)
+				'End if.
+				F.Intrinsic.Control.EndIf
+				'Set the Assign history on the udt
+				V.uGlobal.uHistory(v.Local.iCount)!AssignHis.Set(V.ODBC.conx!rst.FieldVal!Emp_Num)
+				'Set the Part number on the udt.
+				V.uGlobal.uHistory(v.Local.iCount)!PartNum.Set(V.uGlobal.uITPart(v.Local.iCount2)!PartNum)
+				'Set the Tag ID on the udt.
+				V.uGlobal.uHistory(v.Local.iCount)!TagID.Set(V.ODBC.conx!rst.FieldVal!IT_Tag)
+				'Set the make on the udt.
+				V.uGlobal.uHistory(v.Local.iCount)!Make.Set(V.uGlobal.uITPart(v.Local.iCount2)!Make)
+				'Set the product key on the udt.
+				V.uGlobal.uHistory(v.Local.iCount)!ProdKey.Set(V.uGlobal.uITPart(v.Local.iCount2)!ProdKey)
+				'Set the model on the udt.
+				V.uGlobal.uHistory(v.Local.iCount)!Model.Set(V.uGlobal.uITPart(v.Local.iCount2)!Model)
+				'move to the next record.
+				F.ODBC.conx!rst.MoveNext
+				'Loop through the Record
+			F.Intrinsic.Control.Loop
+			'Close connection to the record
+			F.ODBC.conx!rst.Close
+	'Loop to next value in udt.
+	F.Intrinsic.Control.Next(V.Local.iCount2)
+	'Set field reference of udt
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uHistory!Flag,"Flag")
+	'Set value to H
+	F.Intrinsic.Variable.UDTSetMemberValue(V.uGlobal.uHistory!Flag,"H")
+'End if
+F.Intrinsic.Control.Endif
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("History_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.History.End
+
+Program.Sub.NoHistory.Start
+F.Intrinsic.Control.SetErrorHandler("NoHistory_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to hold check
+V.Local.sCheck.Declare(String)
+'Variable for loop counter
+V.Local.iCount.Declare(Long)
+
+
+'Set the UDT Field Reference
+F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uITPart!Flag,"Flag")
+		'Set the value to 'C'
+F.Intrinsic.Variable.UDTSetMemberValue(V.uGlobal.uITPart!Flag,"C")
+		'Loop through the udt.
+F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uITPart.UBound,1)
+			'Set the check to the current assignment
+	V.Local.sCheck.Set(V.uGlobal.uITPart(v.Local.iCount)!CurrAssign.Trim)
+			'Check to see if it is blank
+	F.Intrinsic.Control.If(V.Local.sCheck,=,"")
+				'if blank set flag to N
+		V.uGlobal.uITPart(v.Local.iCount)!Flag.Set("N")
+			'End if.	
+	F.Intrinsic.Control.EndIf
+		'Loop to next.
+F.Intrinsic.Control.Next(V.Local.iCount)
+		
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("NoHistory_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Info_Report.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.NoHistory.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_IT_Info_Report$}$SKT$}$4/25/2014
+Program.Sub.Comments.End
+
