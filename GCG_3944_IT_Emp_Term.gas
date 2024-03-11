@@ -1,0 +1,119 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Variable.UDT.uTerm.Define("sEmp",String,Employee)
+Variable.uGlobal.uTerm.Declare("uTerm")
+Variable.UDT.uTermHis.Define("sEmp",String,Emp_Num)
+Variable.UDT.uTermHis.Define("sTag",String,IT_Tag)
+Variable.UDT.uTermHis.Define("sDateIssued",String,Date_Issued)
+Variable.UDT.uTermHis.Define("sTerm",String,Date_UnIssued)
+Variable.uGlobal.uTermHis.Declare("uTermHis")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Variable
+V.Local.sSql.Declare(String)
+'Variable for Employee number
+V.Local.sEmp.Declare(String)
+V.Local.sTag.Declare(String)
+'Variables for loop counters
+V.Local.iCount.Declare(Long)
+V.Local.iCount2.Declare(Long)
+'Termination date
+V.Local.dDate.Declare(Date)
+
+V.Local.dDate.Set(V.Ambient.Date)
+'Initialize the UDT
+V.uGlobal.uTermHis.Redim(-1,-1)
+V.Local.iCount2.Set(0)
+
+
+'Open connection to the Database
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+'Set SQL Query
+F.Intrinsic.String.Concat("Select Employee From v_Employee_MSTR where Date_Termination = '",V.Local.dDate.PervasiveDate,"'",V.Local.sSql)
+'Open connection to record set
+F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+'Check to see if there are any records
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,!=,True)
+	'If there are add them to the UDT
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","v.uGlobal.uTerm",False)
+	'Close connection to records
+	F.ODBC.conx!rst.Close
+	'Loop through the employees that were terminated.
+	F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uTerm.UBound,1)
+		'Set Employee number
+		V.Local.sEmp.set(V.uGlobal.uTerm(v.local.icount)!sEmp.Trim)
+		'Set SQL Query to get the IT assets that were assigned to that employee
+		V.Local.sSql.Set("Select Employee_Num, IT_Tag_ID, Assigned_Date From GCG_3944_Part_Track where Employee_Num = '")
+		F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sEmp,"'",V.Local.sSql)
+		'Open connection to the records
+		F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+		'Loop through all records till EOF is reached
+		F.Intrinsic.Control.DoUntil(V.ODBC.conx!rst.EOF,=,True)
+			'check to see if there are any Values in the UDT
+			F.Intrinsic.Control.If(V.uGlobal.uTermHis.UBound,=,-1)
+				'IF no Initialize
+				V.uGlobal.uTermHis.Redim(0,0)
+			F.Intrinsic.Control.Else
+				'Else add to
+				F.Intrinsic.Math.Add(V.uGlobal.uTermHis.UBound,1,V.Local.iCount2)
+				V.uGlobal.uTermHis.RedimPreserve(0,V.Local.iCount2)
+			F.Intrinsic.Control.EndIf
+			'Set the UDT with the Tag ID
+			V.uGlobal.uTermHis(v.Local.iCount2)!sTag.Set(V.ODBC.conx!rst.FieldVal!IT_Tag_ID)
+			'Set the UDT with the Assigned date
+			V.uGlobal.uTermHis(v.Local.iCount2)!sDateIssued.Set(V.ODBC.conx!rst.FieldVal!Assigned_Date)
+			'Set the Unassigned date
+			V.uGlobal.uTermHIs(v.Local.iCount2)!sTerm.Set(V.Ambient.Date)
+			'Set the Employee number
+			V.uGlobal.uTermHis(v.Local.iCount2)!sEmp.Set(V.uGlobal.uTerm(v.Local.iCount)!sEmp)
+			'Remove the Employee from the assignment
+			F.ODBC.conx!rst.Set!Employee_Num("")
+			'Update the record
+			F.ODBC.conx!rst.Update
+			'Move to the next record
+			F.ODBC.conx!rst.MoveNext
+		'Loop through till EOF is reached
+		F.Intrinsic.Control.Loop
+		'Close connection to the record set
+		F.ODBC.conx!rst.Close
+	'Loop through all Employees terminated that day			
+	F.Intrinsic.Control.Next(V.Local.iCount)
+
+	V.Local.iCount.Set(0)
+	'Set the GCG_IT_Part_History table with the updated unissued dates
+	F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uTermHis.UBound,1)
+		V.Local.sTag.Set(V.uGlobal.uTermHis(v.Local.iCount)!sTag)
+		V.Local.sSql.Set("Select * From GCG_3944_Part_Hist Where IT_Tag = '")
+		F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sTag.Trim,"' and Date_UnIssued is NULL",V.Local.sSql)
+		F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+		F.ODBC.conx!rst.Set!Date_UnIssued(V.Ambient.Date)
+		F.ODBC.conx!rst.Update
+		F.ODBC.conx!rst.Close
+	F.Intrinsic.Control.Next(V.Local.iCount)
+
+'End if
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Emp_Term.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_IT_Emp_Term$}$SKT$}$5/6/2014
+Program.Sub.Comments.End
+
