@@ -1,0 +1,621 @@
+Program.Sub.ScreenSU.Start
+gui.Form1..create
+gui.Form1..caption("IT Asset Purchase Orders")
+gui.Form1..size(8550,7020)
+gui.Form1..minx(0)
+gui.Form1..miny(0)
+gui.Form1..position(0,0)
+gui.Form1..event(unload,form1_unload)
+gui.Form1..alwaysontop(False)
+gui.Form1..fontname("Arial")
+gui.Form1..fontsize(8)
+gui.Form1..forecolor(0)
+gui.Form1..fontstyle(,,,,)
+gui.Form1..BackColor(-2147483633)
+gui.Form1..controlbox(True)
+gui.Form1..maxbutton(True)
+gui.Form1..minbutton(True)
+gui.Form1..mousepointer(0)
+gui.Form1..moveable(True)
+gui.Form1..sizeable(True)
+gui.Form1..ShowInTaskBar(True)
+gui.Form1..titlebar(True)
+gui.Form1.dtpSDate.create(datepicker)
+gui.Form1.dtpSDate.visible(True)
+gui.Form1.dtpSDate.size(1935,285)
+gui.Form1.dtpSDate.zorder(0)
+gui.Form1.dtpSDate.position(200,500)
+gui.Form1.dtpSDate.enabled(True)
+gui.Form1.dtpSDate.checkbox(False)
+gui.Form1.dtpSDate.defaultvalue("")
+gui.Form1.dtpSDate.controlgroup(0)
+gui.Form1.lblSDate.create(label,"Starting Date",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblSDate.defaultvalue("")
+gui.Form1.lblSDate.controlgroup(0)
+gui.Form1.lblEDate.create(label,"Ending Date",True,1935,255,1,2870,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblEDate.defaultvalue("")
+gui.Form1.lblEDate.controlgroup(0)
+gui.Form1.dtpEDate.create(datepicker)
+gui.Form1.dtpEDate.visible(True)
+gui.Form1.dtpEDate.size(1935,285)
+gui.Form1.dtpEDate.zorder(0)
+gui.Form1.dtpEDate.position(2870,485)
+gui.Form1.dtpEDate.enabled(True)
+gui.Form1.dtpEDate.checkbox(False)
+gui.Form1.dtpEDate.defaultvalue("")
+gui.Form1.dtpEDate.controlgroup(0)
+gui.Form1.lblVendor.create(label,"Vendor",True,1935,255,1,200,1025,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblVendor.defaultvalue("")
+gui.Form1.lblVendor.controlgroup(0)
+gui.Form1.txtVendor.create(textbox,"",True,1215,300,0,200,1280,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtVendor.defaultvalue("")
+gui.Form1.txtVendor.controlgroup(0)
+gui.Form1.cmdVendor.create(button)
+gui.Form1.cmdVendor.caption("^")
+gui.Form1.cmdVendor.visible(True)
+gui.Form1.cmdVendor.size(855,375)
+gui.Form1.cmdVendor.zorder(0)
+gui.Form1.cmdVendor.position(1500,1225)
+gui.Form1.cmdVendor.enabled(True)
+gui.Form1.cmdVendor.fontname("Arial")
+gui.Form1.cmdVendor.fontsize(8)
+gui.Form1.cmdVendor.event(click,cmdvendor_click)
+gui.Form1.cmdVendor.defaultvalue("")
+gui.Form1.cmdVendor.controlgroup(0)
+gui.Form1.lblPart.create(label,"IT Asset",True,1935,255,1,2870,1025,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblPart.defaultvalue("")
+gui.Form1.lblPart.controlgroup(0)
+gui.Form1.txtPart.create(textbox,"",True,1890,300,0,2870,1280,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtPart.defaultvalue("")
+gui.Form1.txtPart.controlgroup(0)
+gui.Form1.cmdPart.create(button)
+gui.Form1.cmdPart.caption("^")
+gui.Form1.cmdPart.visible(True)
+gui.Form1.cmdPart.size(855,375)
+gui.Form1.cmdPart.zorder(0)
+gui.Form1.cmdPart.position(4850,1225)
+gui.Form1.cmdPart.enabled(True)
+gui.Form1.cmdPart.fontname("Arial")
+gui.Form1.cmdPart.fontsize(8)
+gui.Form1.cmdPart.event(click,cmdpart_click)
+gui.Form1.cmdPart.defaultvalue("")
+gui.Form1.cmdPart.controlgroup(0)
+gui.Form1.gsfgPO.create(gsflexgrid)
+gui.Form1.gsfgPO.FixedRows(0)
+gui.Form1.gsfgPO.FixedCols(0)
+gui.Form1.gsfgPO.visible(True)
+gui.Form1.gsfgPO.size(7965,3180)
+gui.Form1.gsfgPO.zorder(0)
+gui.Form1.gsfgPO.position(100,2470)
+gui.Form1.gsfgPO.enabled(True)
+gui.Form1.cmdDelete.create(button)
+gui.Form1.cmdDelete.caption("Remove")
+gui.Form1.cmdDelete.visible(True)
+gui.Form1.cmdDelete.size(855,375)
+gui.Form1.cmdDelete.zorder(0)
+gui.Form1.cmdDelete.position(100,5900)
+gui.Form1.cmdDelete.enabled(True)
+gui.Form1.cmdDelete.fontname("Arial")
+gui.Form1.cmdDelete.fontsize(8)
+gui.Form1.cmdDelete.event(click,cmddelete_click)
+gui.Form1.cmdDelete.defaultvalue("")
+gui.Form1.cmdDelete.controlgroup(0)
+gui.Form1.cmdPrint.create(button)
+gui.Form1.cmdPrint.caption("Print")
+gui.Form1.cmdPrint.visible(True)
+gui.Form1.cmdPrint.size(855,375)
+gui.Form1.cmdPrint.zorder(0)
+gui.Form1.cmdPrint.position(1200,5900)
+gui.Form1.cmdPrint.enabled(True)
+gui.Form1.cmdPrint.fontname("Arial")
+gui.Form1.cmdPrint.fontsize(8)
+gui.Form1.cmdPrint.event(click,cmdprint_click)
+gui.Form1.cmdPrint.defaultvalue("")
+gui.Form1.cmdPrint.controlgroup(0)
+gui.Form1.cmdAdd.create(button)
+gui.Form1.cmdAdd.caption("Add")
+gui.Form1.cmdAdd.visible(True)
+gui.Form1.cmdAdd.size(855,375)
+gui.Form1.cmdAdd.zorder(0)
+gui.Form1.cmdAdd.position(200,1880)
+gui.Form1.cmdAdd.enabled(True)
+gui.Form1.cmdAdd.fontname("Arial")
+gui.Form1.cmdAdd.fontsize(8)
+gui.Form1.cmdAdd.event(click,cmdadd_click)
+gui.Form1.cmdAdd.defaultvalue("")
+gui.Form1.cmdAdd.controlgroup(0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uITPO.Define("iBIRunID",Long)
+Variable.UDT.uITPO.Define("iPrice",Long,Extension)
+Variable.UDT.uITPO.Define("iQty",Long,Qty_Order)
+Variable.UDT.uITPO.Define("sPartNum",String,Part)
+Variable.UDT.uITPO.Define("sPONum",String,Purchase_Order)
+Variable.UDT.uITPO.Define("sVenName",String,Name_Vendor)
+Variable.UDT.uITPO.Define("sVenNum",String,Vendor)
+Variable.UDT.uITPO.Define("dDueDate",String,Date_Due_Line)
+Variable.uGlobal.uITPO.Declare("uITPO")
+Variable.Global.iBIRunID.Declare(Long,0)
+Variable.Global.iBILogID.Declare(Long,0)
+Variable.UDT.uITPORep.Define("iBIRunID",Long,BIRUNID)
+Variable.UDT.uITPORep.Define("iPrice",Long,Price)
+Variable.UDT.uITPORep.Define("iQty",Long,Quantity)
+Variable.UDT.uITPORep.Define("sPartNum",String,Part_Num)
+Variable.UDT.uITPORep.Define("sPONum",String,PO_Num)
+Variable.UDT.uITPORep.Define("sVenName",String,Ven_Name)
+Variable.UDT.uITPORep.Define("sVenNum",String,Ven_Num)
+Variable.UDT.uITPORep.Define("dDateDue",String,Date_Due)
+
+Variable.uGlobal.uITPORep.Declare("uITPORep")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Open connection to database
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+'Set udt to -1,-1
+V.uGlobal.uITPO.Redim(-1,-1)
+'Call sub Buildstyle
+F.Intrinsic.Control.CallSub(Buildstyle)
+'Show form 1.
+Gui.Form1..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+program.sub.form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Close Connection
+F.ODBC.Connection!conx.Close
+'End program.
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.form1_unload.end
+
+program.sub.cmdvendor_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdvendor_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for Return value.
+V.Local.sRet.Declare(String)
+'Launch vendor browser.
+F.Intrinsic.UI.Browser(300,"",V.Local.sRet)
+'Check to see if the user clicks cancel.
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	'Exit sub.
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'Else split the return value.
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'Save vendor to text box.
+	Gui.Form1.txtVendor.Text(V.Local.sRet(0).Trim)
+'End if.
+F.Intrinsic.Control.Endif
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdvendor_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdvendor_click.end
+
+program.sub.cmdpart_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdpart_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Query.
+V.Local.sSql.Declare(String)
+'Variable for Titles in mini browser.
+V.Local.sTitles.Declare(String)
+'Variable for Widths in mini browser.
+V.Local.sWidths.Declare(String)
+'Variable to hold return value.
+V.Local.sRet.Declare(String)
+'Set the SQL Query.
+V.Local.sSql.Set("Select Part, Description From Inventory_MSTR Where Product_Line = 'IT'")
+'Split the Titles
+F.Intrinsic.String.Split("Part Number*!*Description","*!*",V.Local.sTitles)
+'Split the widths.
+F.Intrinsic.String.Split("2000*!*2000","*!*",V.Local.sWidths)
+'Launch the mini browser.
+F.Intrinsic.UI.MiniBrowser("IT Asset","conx",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,V.Local.sRet)
+'Check if the user clicked Cancel.
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	'Exit sub.
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'Else Split the return value.
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'Save the part number to the text box.
+	Gui.Form1.txtPart.Text(V.Local.sRet(0).Trim)
+'End if.
+F.Intrinsic.Control.EndIf
+'Exit sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmdpart_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdpart_click.end
+
+program.sub.cmddelete_click.start
+F.Intrinsic.Control.SetErrorHandler("cmddelete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for Check
+V.Local.sCheck.Declare(String)
+'Variable for Row count
+V.Local.iRow.Declare(Long)
+'Variable for loop counter.
+V.Local.iCount.Declare(Long)
+'Get the number of rows in the flexgrid.
+V.Local.iRow.Set(V.Screen.Form1!gsfgPO.Rows)
+'Subtract the title and blank row at the bottom of the flexgrid.
+F.Intrinsic.Math.Sub(V.Local.iRow,2,V.Local.iRow)
+'Loop through the flexgrid.
+F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRow,1)
+	'Save value of the check box.
+	Gui.Form1.gsfgPO.GetTextMatrix(4,V.Local.iCount,V.Local.sCheck)
+	'If it is checked
+	F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+		'Remove style from the row.
+		Gui.Form1.gsfgPO.RemoveStyle(V.Local.iCount)
+		'Subtract 1 from the loop counter
+		F.Intrinsic.Math.Sub(V.Local.iCount,1,V.Local.iCount)
+		'Delete the row from the flexgrid.
+		Gui.Form1.gsfgPO.DeleteRow(V.Local.iCount)
+		'Subtract 1 from the number of rows on the flexgrid.
+		F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+	'End if.
+	F.Intrinsic.Control.EndIf
+'loop to next row.
+F.Intrinsic.Control.Next(V.Local.iCount)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmddelete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmddelete_click.end
+
+program.sub.cmdprint_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdprint_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Query.
+V.Local.sSql.Declare(String)
+'Variable for check
+V.Local.sCheck.Declare(String)
+'Variable for vendor
+V.Local.sVendor.Declare(String)
+'Variable for part.
+V.Local.sPart.Declare(String)
+'Variable for start date.
+V.Local.dStart.Declare(Date)
+'Variable for end date.
+V.Local.dEnd.Declare(Date)
+'Variable for loop counter
+V.Local.iCount.Declare(Long)
+'Variable for loop counter.
+V.Local.iCount2.Declare(Long)
+'Variable for number of rows.
+V.Local.iRow.Declare(Long)
+'Get BIRUNID.
+F.Global.BI.GetRunID(V.Global.iBIRunID)
+'Start Logging.
+F.Global.BI.StartLogging(V.Global.iBIRunID,-1,-1,"",V.Global.iBILogID)
+
+'Get the number of rows in the flexgrid.
+V.Local.iRow.Set(V.Screen.Form1!gsfgPO.Rows)
+'Subtract the title and blank row from the count.
+F.Intrinsic.Math.Sub(V.Local.iRow,2,V.Local.iRow)
+'Loop through the flexgrid.
+F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRow,1)
+	'Get the start date.
+	Gui.Form1.gsfgPO.GetTextMatrix(0,V.Local.iCount,V.Local.dStart)
+	'Get the end date.
+	Gui.Form1.gsfgPO.GetTextMatrix(1,V.Local.iCount,V.Local.dEnd)
+	'Get the vendor number.
+	Gui.Form1.gsfgPO.GetTextMatrix(2,V.Local.iCount,V.Local.sVendor)
+	'Get the part number.
+	Gui.Form1.gsfgPO.GetTextMatrix(3,V.Local.iCount,V.Local.sPart)
+
+	'Set the SQL Query.
+	V.Local.sSql.Set("Select v_PO_Lines.Purchase_Order, v_PO_Lines.Part, v_PO_Lines.Date_Due_Line, v_PO_Lines.Qty_Order, v_PO_Lines.Extension, v_PO_Lines.Vendor, v_Vendor_Master.Name_Vendor From v_PO_Lines Join v_Vendor_Master on v_PO_Lines.Vendor=v_Vendor_Master.Vendor  Where v_PO_Lines.Vendor Like '%")
+	F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sVendor,"%' and v_PO_Lines.Part Like '%",V.Local.sPart,"%' and v_PO_Lines.Flag_Recv_Close = 'N' and v_PO_Lines.Date_Due_Line Between '",V.Local.dStart.PervasiveDate,"' and '",V.Local.dEnd.PervasiveDate,"'",V.Local.sSql)
+	'Open the connection to the record.
+	F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+	F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,!=,True)
+		'Check to see if there is anything in the udt.
+		F.Intrinsic.Control.If(V.uGlobal.uITPO.UBound,=,-1)
+			'if not redim
+			V.uGlobal.uITPO.Redim(0,0)
+		F.Intrinsic.Control.Else
+			'Else Add 1
+			F.Intrinsic.Math.Add(V.uGlobal.uITPO.UBound,1,V.Local.iCount2)
+			'Redim and perserve.
+			V.uGlobal.uITPO.RedimPreserve(0,V.Local.iCount2)
+		'End if.
+		F.Intrinsic.Control.EndIf
+
+		
+		'Set the Due date of udt.
+		V.uGlobal.uITPO(v.Local.iCount2)!dDueDate.Set(V.ODBC.conx!rst.FieldVal!Date_Due_Line)
+		'Set the Price of udt.
+		V.uGlobal.uITPO(v.Local.iCount2)!iPrice.Set(V.ODBC.conx!rst.FieldVal!Extension)
+		'Set the Quantity ordered of udt.
+		V.uGlobal.uITPO(v.Local.iCount2)!iQty.Set(V.ODBC.conx!rst.Fieldval!Qty_Order)
+		'Set the Part number of udt.
+		V.uGlobal.uITPO(v.Local.iCount2)!sPartNum.Set(V.ODBC.conx!rst.FieldVal!Part)
+		'Set the PO number of udt.
+		V.uGlobal.uITPO(v.Local.iCount2)!sPONum.Set(V.ODBC.conx!rst.FieldVal!Purchase_Order)
+		'Set the vendor name of udt.
+		V.uGlobal.uITPO(v.Local.iCount2)!sVenName.Set(V.ODBC.conx!rst.FieldVal!Name_Vendor)
+		'Set the Vendor number on udt.
+		V.uGlobal.uITPO(v.Local.iCount2)!sVenNum.Set(V.ODBC.conx!rst.FieldVal!Vendor)
+
+	F.Intrinsic.Control.EndIf
+
+	'Close connection.
+	F.ODBC.conx!rst.Close
+'Move to next row.
+F.Intrinsic.Control.Next(V.Local.iCount)
+
+'Set the field reference to BIRunID
+F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uITPO!iBIRunID,"BIRunID")
+'Set the value to the BIRUNID
+F.Intrinsic.Variable.UDTSetMemberValue(V.uGlobal.uITPO!iBIRunID,V.Global.iBIRunID)
+
+F.Intrinsic.Control.If(V.uGlobal.uITPO.UBound,!=,-1)
+	'Copy udt.
+	F.Intrinsic.Variable.UDTCopy(V.uGlobal.uITPO,V.uGlobal.uITPORep,False)
+	'Set SQL Query.
+	V.Local.sSql.Set("Select * From GCG_3944_PO_Rep")
+	'Open connection to record
+	F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+
+	'F.ODBC.conx!rst.Set!Date_Due(V.uGlobal.uITPORep!dDateDue)
+	'Save the udt to the record.
+	F.Intrinsic.Variable.SaveUDTToRecordset("conx","rst","v.uGlobal.uITPORep")
+
+	'Close the connection to the record.
+	F.ODBC.conx!rst.Close
+	'Call Sub Callbi
+	F.Intrinsic.Control.CallSub(Callbi)
+	'Call sub Form1_unload.
+	F.Intrinsic.Control.CallSub(Form1_unload)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("There are no Open Purchase Orders!","Purchase Orders")
+F.Intrinsic.Control.EndIf
+
+'Exit sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmdprint_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdprint_click.end
+
+Program.Sub.BuildStyle.Start
+F.Intrinsic.Control.SetErrorHandler("BuildStyle_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Set the Flexgrid to have 5 columns with 2 rows.  One row will be fixed so it can contain the titles.
+Gui.Form1.gsfgPO.Cols(5)
+Gui.Form1.gsfgPO.Rows(2)
+Gui.Form1.gsfgPO.FixedRows(1)
+'Set the amount of space each column will take up.
+Gui.Form1.gsfgPO.SetColumnPercentages(".20:.20:.10:.30:.20")
+
+'Build Style
+'Column 0
+'Style 1
+Gui.Form1.gsfgPO.BuildStyle(1,0,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(1,0,"Fontstyle","Bold",True)
+Gui.Form1.gsfgPO.BuildStyle(1,0,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgPO.BuildStyle(2,0,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(2,0,"Format","Alignment",2)
+
+'Column 1
+'Style 1
+Gui.Form1.gsfgPO.BuildStyle(1,1,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(1,1,"Fontstyle","Bold",True)
+Gui.Form1.gsfgPO.BuildStyle(1,1,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgPO.BuildStyle(2,1,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(2,1,"Format","Alignment",2)
+
+'Column 2
+'Style 1
+Gui.Form1.gsfgPO.BuildStyle(1,2,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(1,2,"Fontstyle","Bold",True)
+Gui.Form1.gsfgPO.BuildStyle(1,2,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgPO.BuildStyle(2,2,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(2,2,"Format","Alignment",2)
+
+'Column 3
+'Style 1
+Gui.Form1.gsfgPO.BuildStyle(1,3,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(1,3,"Fontstyle","Bold",True)
+Gui.Form1.gsfgPO.BuildStyle(1,3,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgPO.BuildStyle(2,3,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(2,3,"Format","Alignment",2)
+
+'Column 4
+'Style 1
+Gui.Form1.gsfgPO.BuildStyle(1,4,"Type","Locked",True)
+Gui.Form1.gsfgPO.BuildStyle(1,4,"Fontstyle","Bold",True)
+Gui.Form1.gsfgPO.BuildStyle(1,4,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgPO.BuildStyle(2,4,"Format","Alignment",4)
+Gui.Form1.gsfgPO.BuildStyle(2,4,"Type","Checkbox",True)
+'apply style 1 to row 0
+Gui.Form1.gsfgPO.ApplyStyle(0,1)
+'Apply style 2 to row 1
+Gui.Form1.gsfgPO.ApplyStyle(1,2)
+'Set the Titles for each column
+Gui.Form1.gsfgPO.TextMatrix(0,0,"Starting Date")
+Gui.Form1.gsfgPO.TextMatrix(1,0,"Ending Date")
+Gui.Form1.gsfgPO.TextMatrix(2,0,"Vendor")
+Gui.Form1.gsfgPO.TextMatrix(3,0,"Part Number")
+Gui.Form1.gsfgPO.TextMatrix(4,0,"Remove")
+'Exit sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("BuildStyle_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.BuildStyle.End
+
+program.sub.cmdadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for number or rows in the flexgrid
+V.Local.iRow.Declare(Long)
+'Get the number of rows in the flexgrid
+V.Local.iRow.Set(V.Screen.Form1!gsfgPO.Rows)
+'Subrtract 1 from the number of rows.
+F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+'Check to make sure the part and vendor have been selected.
+f.Intrinsic.Control.If(v.Screen.Form1!txtPart.Text,!=,"",and,v.Screen.Form1!txtVendor.Text,!=,"")
+	'Save start date to the flexgrid
+	Gui.Form1.gsfgPO.TextMatrix(0,V.Local.iRow,V.Screen.Form1!dtpSDate.Value)
+	'save the end date to the flexgrid
+	Gui.Form1.gsfgPO.TextMatrix(1,V.Local.iRow,V.Screen.Form1!dtpEDate.Value)
+	'Save the vendor to the flexgrid
+	Gui.Form1.gsfgPO.TextMatrix(2,V.Local.iRow,V.Screen.Form1!txtVendor.Text)
+	'Save the Part to the flexgrid
+	Gui.Form1.gsfgPO.TextMatrix(3,V.Local.iRow,V.Screen.Form1!txtPart.Text)
+	'Apply style 2 to the row
+	Gui.Form1.gsfgPO.ApplyStyle(V.Local.iRow,2)
+	'Add 2 to the number of rows
+	F.Intrinsic.Math.Add(V.Local.iRow,2,V.Local.iRow)
+	'Update the flexgrid number of rows.
+	Gui.Form1.gsfgPO.Rows(V.Local.iRow)
+	'Clear the Part text box
+	Gui.Form1.txtPart.Text("")
+	'Clear the vendor text box
+	Gui.Form1.txtVendor.Text("")
+'End if.
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdadd_click.end
+
+Program.Sub.CallBI.Start
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable will hold the String "BIRUNID"
+V.Local.sParam.Declare(String)
+'variable will hold the birunid number
+V.Local.sVal.Declare(String)
+
+'Stop the logging
+F.Global.BI.StopLogging(V.Global.iBILogID)
+'Set the parameters.
+V.Local.sParam.Set("BIRUNID")
+V.Local.sVal.Set(V.Global.iBIRunID)
+'Run the report.
+F.Global.BI.RunReportPreProcessor(V.Global.iBIRunID,V.Global.iBILogID,V.Local.sParam,V.Local.sVal,"",-1,True,"",-1,"",-1,"","",V.Global.iBIRunID)
+'Exit the sub.
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_PO_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CallBI.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_IT_PO_Rep$}$SKT$}$4/30/2014
+Program.Sub.Comments.End
+
