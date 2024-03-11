@@ -1,0 +1,700 @@
+Program.Sub.ScreenSU.Start
+gui.Form1..create
+gui.Form1..caption("IT Assets Employee Assignment")
+gui.Form1..size(5475,5070)
+gui.Form1..minx(0)
+gui.Form1..miny(0)
+gui.Form1..position(0,0)
+gui.Form1..event(unload,form1_unload)
+gui.Form1..alwaysontop(False)
+gui.Form1..fontname("Arial")
+gui.Form1..fontsize(8)
+gui.Form1..forecolor(0)
+gui.Form1..fontstyle(,,,,)
+gui.Form1..BackColor(-2147483633)
+gui.Form1..controlbox(True)
+gui.Form1..maxbutton(True)
+gui.Form1..minbutton(True)
+gui.Form1..mousepointer(0)
+gui.Form1..moveable(True)
+gui.Form1..sizeable(True)
+gui.Form1..ShowInTaskBar(True)
+gui.Form1..titlebar(True)
+gui.Form1.lblSEmp.create(label,"Starting Employee",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblSEmp.defaultvalue("")
+gui.Form1.lblSEmp.controlgroup(0)
+gui.Form1.txtSEmp.create(textbox,"",True,1215,300,0,200,500,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtSEmp.defaultvalue("")
+gui.Form1.txtSEmp.controlgroup(0)
+gui.Form1.cmdSSearch.create(button)
+gui.Form1.cmdSSearch.caption("^")
+gui.Form1.cmdSSearch.visible(True)
+gui.Form1.cmdSSearch.size(855,375)
+gui.Form1.cmdSSearch.zorder(0)
+gui.Form1.cmdSSearch.position(1605,460)
+gui.Form1.cmdSSearch.enabled(True)
+gui.Form1.cmdSSearch.fontname("Arial")
+gui.Form1.cmdSSearch.fontsize(8)
+gui.Form1.cmdSSearch.event(click,cmdssearch_click)
+gui.Form1.cmdSSearch.defaultvalue("")
+gui.Form1.cmdSSearch.controlgroup(0)
+gui.Form1.lblEEmp.create(label,"Ending Employee",True,1935,255,1,2790,200,True,0,Arial,8,-2147483633,0)
+gui.Form1.lblEEmp.defaultvalue("")
+gui.Form1.lblEEmp.controlgroup(0)
+gui.Form1.txtEEmp.create(textbox,"",True,1215,300,0,2790,500,True,0,Arial,8,-2147483643,1)
+gui.Form1.txtEEmp.defaultvalue("")
+gui.Form1.txtEEmp.controlgroup(0)
+gui.Form1.cmdESearch.create(button)
+gui.Form1.cmdESearch.caption("^")
+gui.Form1.cmdESearch.visible(True)
+gui.Form1.cmdESearch.size(855,375)
+gui.Form1.cmdESearch.zorder(0)
+gui.Form1.cmdESearch.position(4145,445)
+gui.Form1.cmdESearch.enabled(True)
+gui.Form1.cmdESearch.fontname("Arial")
+gui.Form1.cmdESearch.fontsize(8)
+gui.Form1.cmdESearch.event(click,cmdesearch_click)
+gui.Form1.cmdESearch.defaultvalue("")
+gui.Form1.cmdESearch.controlgroup(0)
+gui.Form1.chkAllEmp.create(checkbox)
+gui.Form1.chkAllEmp.caption("Select All Employees")
+gui.Form1.chkAllEmp.visible(True)
+gui.Form1.chkAllEmp.size(1935,255)
+gui.Form1.chkAllEmp.zorder(0)
+gui.Form1.chkAllEmp.position(200,945)
+gui.Form1.chkAllEmp.enabled(True)
+gui.Form1.chkAllEmp.alignment(0)
+gui.Form1.chkAllEmp.fontname("Arial")
+gui.Form1.chkAllEmp.fontsize(8)
+gui.Form1.chkAllEmp.event(click,chkallemp_click)
+gui.Form1.chkAllEmp.defaultvalue("")
+gui.Form1.chkAllEmp.controlgroup(0)
+gui.Form1.gsfgEmp.create(gsflexgrid)
+gui.Form1.gsfgEmp.FixedRows(0)
+gui.Form1.gsfgEmp.FixedCols(0)
+gui.Form1.gsfgEmp.visible(True)
+gui.Form1.gsfgEmp.size(4770,1980)
+gui.Form1.gsfgEmp.zorder(0)
+gui.Form1.gsfgEmp.position(200,1800)
+gui.Form1.gsfgEmp.enabled(True)
+gui.Form1.cmdPrint.create(button)
+gui.Form1.cmdPrint.caption("Print")
+gui.Form1.cmdPrint.visible(True)
+gui.Form1.cmdPrint.size(855,375)
+gui.Form1.cmdPrint.zorder(0)
+gui.Form1.cmdPrint.position(1235,3960)
+gui.Form1.cmdPrint.enabled(True)
+gui.Form1.cmdPrint.fontname("Arial")
+gui.Form1.cmdPrint.fontsize(8)
+gui.Form1.cmdPrint.event(click,cmdprint_click)
+gui.Form1.cmdPrint.defaultvalue("")
+gui.Form1.cmdPrint.controlgroup(0)
+gui.Form1.cmdAdd.create(button)
+gui.Form1.cmdAdd.caption("Add")
+gui.Form1.cmdAdd.visible(True)
+gui.Form1.cmdAdd.size(855,375)
+gui.Form1.cmdAdd.zorder(0)
+gui.Form1.cmdAdd.position(200,1290)
+gui.Form1.cmdAdd.enabled(True)
+gui.Form1.cmdAdd.fontname("Arial")
+gui.Form1.cmdAdd.fontsize(8)
+gui.Form1.cmdAdd.event(click,cmdadd_click)
+gui.Form1.cmdAdd.defaultvalue("")
+gui.Form1.cmdAdd.controlgroup(0)
+gui.Form1.cmdDelete.create(button)
+gui.Form1.cmdDelete.caption("Remove")
+gui.Form1.cmdDelete.visible(True)
+gui.Form1.cmdDelete.size(855,375)
+gui.Form1.cmdDelete.zorder(0)
+gui.Form1.cmdDelete.position(115,3960)
+gui.Form1.cmdDelete.enabled(True)
+gui.Form1.cmdDelete.fontname("Arial")
+gui.Form1.cmdDelete.fontsize(8)
+gui.Form1.cmdDelete.event(click,cmddelete_click)
+gui.Form1.cmdDelete.defaultvalue("")
+gui.Form1.cmdDelete.controlgroup(0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uAssign.Define("iBIRunID",Long)
+Variable.UDT.uAssign.Define("sTagID",String,IT_Tag_ID)
+Variable.UDT.uAssign.Define("sProdKey",String,Text_Line1)
+Variable.UDT.uAssign.Define("sPartNum",String,IT_Part_Num)
+Variable.UDT.uAssign.Define("sModel",String)
+Variable.UDT.uAssign.Define("sMake",String)
+Variable.UDT.uAssign.Define("sEmp",String,Employee_Num)
+Variable.uGlobal.uAssign.Declare("uAssign")
+
+Variable.Global.iBIRunID.Declare(Long,0)
+Variable.Global.iBILogID.Declare(Long,0)
+Variable.UDT.uITEmp.Define("iBIRunID",Long,BIRunID)
+Variable.UDT.uITEmp.Define("sTagID",String,Tag_ID)
+Variable.UDT.uITEmp.Define("sProdKey",String,Prod_Key)
+Variable.UDT.uITEmp.Define("sPartNum",String,Part_Num)
+Variable.UDT.uITEmp.Define("sModel",String,Model)
+Variable.UDT.uITEmp.Define("sMake",String,Make)
+Variable.UDT.uITEmp.Define("sEmp",String,Assign)
+
+Variable.uGlobal.uITEmp.Declare("uITEmp")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Opens Connection
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+'Calls the Buildstyle sub
+F.Intrinsic.Control.CallSub(Buildstyle)
+'Set UDT to -1,-1
+V.uGlobal.uAssign.Redim(-1,-1)
+
+'Set the order to the TabIndex of the form.
+Gui.Form1.txtSEmp.TabIndex(0)
+Gui.Form1.cmdSSearch.TabIndex(1)
+Gui.Form1.txtEEmp.TabIndex(2)
+Gui.Form1.cmdESearch.TabIndex(3)
+Gui.Form1.chkAllEmp.TabIndex(4)
+Gui.Form1.cmdAdd.TabIndex(5)
+Gui.Form1.cmdDelete.TabIndex(6)
+Gui.Form1.cmdPrint.TabIndex(7)
+
+'Show the Form
+Gui.Form1..Show
+'Set the focus to the first text box.
+Gui.Form1.txtSEmp.SetFocus
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+program.sub.form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Close Connection
+F.ODBC.Connection!conx.Close
+'End program.
+F.Intrinsic.Control.End
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.form1_unload.end
+
+program.sub.cmdssearch_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdssearch_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for the SQL Query
+V.Local.sSql.Declare(String)
+'Variable to hold the Titles on the browser window
+V.Local.sTitles.Declare(String)
+'Variable to hold the Widths of each Column on the browser window.
+V.Local.sWidths.Declare(String)
+'Variable to hold the return information from the browser.
+V.Local.sRet.Declare(String)
+
+'Set what will be Queried.
+V.Local.sSql.Set("Select Employee, Name From Employee_MSTR Order By Employee")
+'Set the Titles
+F.Intrinsic.String.Split("Employee Number*!*Employee Name","*!*",V.Local.sTitles)
+'Set the Widths
+F.Intrinsic.String.Split("2000*!*2000","*!*",V.Local.sWidths)
+'Open the browser with the employee list.
+F.Intrinsic.UI.MiniBrowser("Employee","conx",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,V.Local.sRet)
+'Check to see if the user clicked cancel
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	'If cancel was clicked exit the sub
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'Else Split the string
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'Set the Starting employee Number.
+	Gui.Form1.txtSEmp.Text(V.Local.sRet(0).Trim)
+	'Set the Ending Employee Number to the same value.
+	Gui.Form1.txtEEmp.Text(V.Local.sRet(0).Trim)
+'End If
+F.Intrinsic.Control.EndIf
+
+'Exit Sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmdssearch_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdssearch_click.end
+
+program.sub.cmdesearch_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdesearch_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for the SQL Query
+V.Local.sSql.Declare(String)
+'Variable for the titles
+V.Local.sTitles.Declare(String)
+'Variable for the widths
+V.Local.sWidths.Declare(String)
+'Variable for the return value.
+V.Local.sRet.Declare(String)
+'Set the SQL Query that will be performed.
+V.Local.sSql.Set("Select Employee, Name From Employee_MSTR Order By Employee")
+'Set the Titles for the Employee Browser
+F.Intrinsic.String.Split("Employee Number*!*Employee Name","*!*",V.Local.sTitles)
+'Set the widths for each column in the employee browser
+F.Intrinsic.String.Split("2000*!*2000","*!*",V.Local.sWidths)
+'Open the Browser.
+F.Intrinsic.UI.MiniBrowser("Employee","conx",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,V.Local.sRet)
+'Check to see if the user clicked cancel
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	'Exit Sub if cancel was clicked
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'Else split the returned string.
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	'set the Employee text box with the employee number.
+	Gui.Form1.txtEEmp.Text(V.Local.sRet(0).Trim)
+'End If
+F.Intrinsic.Control.EndIf
+'Exit Sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmdesearch_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdesearch_click.end
+
+program.sub.cmdprint_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdprint_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable for SQL Query
+V.Local.sSql.Declare(String)
+'Variable to hold value if all employees are checked.
+V.Local.sCheck.Declare(String)
+'Variable to hold starting employee
+V.Local.sStart.Declare(String)
+'Variable to hold ending employee
+V.Local.sEnd.Declare(String)
+'Variable to hold Part.
+V.Local.sPart.Declare(String)
+'Variable to hold a loop count
+V.Local.iCount.Declare(Long)
+'Variable to hold 2nd loop count
+V.Local.iCount2.Declare(Long)
+'Variable to hold row count.
+V.Local.iRow.Declare(Long)
+
+'Get BIRUNID	
+F.Global.BI.GetRunID(V.Global.iBIRunID)
+'Start Logging
+F.Global.BI.StartLogging(V.Global.iBIRunID,-1,-1,"",V.Global.iBILogID)
+
+'Get the number of rows on the flexgrid.
+V.Local.iRow.Set(V.Screen.Form1!gsfgEmp.Rows)
+'Subtract 2 from the count for the header row and the blank row on the bottom
+F.Intrinsic.Math.Sub(V.Local.iRow,2,V.Local.iRow)
+'Check to see if all employees is checked
+V.Local.sCheck.Set(V.Screen.Form1!chkAllEmp.Value)
+
+'If All employees is checked.
+F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+	'All Employee here
+'	V.Local.sSql.Set("Select GCG_IT_Part_Tracking.IT_Part_Num, GCG_IT_Part_Tracking.IT_Tag_ID, GCG_IT_Part_Tracking.Employee_Num, Inventory_MSTR.Description, Extra_Text.Text_Line1, Inventory_MST2.Description_2 From GCG_IT_Part_Tracking inner Join Inventory_MSTR on GCG_IT_Part_Tracking.IT_Part_Num=Inventory_MSTR.Part Join Extra_Text on GCG_IT_Part_Tracking.IT_Part_Num=Extra_Text.Part Join Inventory_MST2 on GCG_IT_Part_Tracking.IT_Part_Num=Inventory_MST2.Part Where GCG_IT_Part_Tracking.Employee_Num <> ''")
+	'Set the SQL Query
+	V.Local.sSql.Set("Select GCG_3944_Part_Track.IT_Part_Num, GCG_3944_Part_Track.IT_Tag_ID, GCG_3944_Part_Track.Employee_Num,  Extra_Text.Text_Line1 From GCG_3944_Part_Track Join Extra_Text on GCG_3944_Part_Track.IT_Part_Num=Extra_Text.Part  where GCG_3944_Part_Track.Employee_Num <> ''")
+	'Open Connection to the record set.
+	F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+	'Redim the UDT.
+	V.uGlobal.uAssign.Redim(0,0)
+	'Load Record set into the udt.
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","v.uGlobal.uAssign",False)
+	'Close the connection.
+	F.ODBC.conx!rst.Close
+	'Loop through the UDT
+	F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uAssign.UBound,1)
+		'Set the Part Number
+		V.Local.sPart.Set(V.uGlobal.uAssign(v.Local.iCount)!sPartNum.Trim)
+		'Set SQL Query
+		V.Local.sSql.Set("Select Inventory_MSTR.Description, Inventory_MST2.Description_2 From Inventory_MSTR Join Inventory_MST2 on Inventory_MSTR.Part = Inventory_MST2.Part where Inventory_MSTR.Part = '")
+		F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sPart.Trim,"'",V.Local.sSql)
+		'Open Connection
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+		'Set the Make value in the udt.
+		V.uGlobal.uAssign(v.Local.iCount)!sMake.Set(V.ODBC.conx!rst.FieldVal!Description)
+		'Set the Model Value in the udt.
+		V.uGlobal.uAssign(v.Local.iCount)!sModel.Set(V.ODBC.conx!rst.FieldVal!Description_2)
+		'Close the connection to the record set.
+		F.ODBC.conx!rst.Close
+	'Go to the next value in the udt.
+	F.Intrinsic.Control.Next(V.Local.iCount)
+	'Reset count to 0
+	V.Local.iCount.Set(0)
+'Else get the records for the employees listed in the flexgrid.
+F.Intrinsic.Control.Else
+
+	'Loop through the flexgrid.
+	F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRow,1)
+		'Set the starting employee number.
+		Gui.Form1.gsfgEmp.GetTextMatrix(0,V.Local.iCount,V.Local.sStart)
+		'Set the ending employee number
+		Gui.Form1.gsfgEmp.GetTextMatrix(1,V.Local.iCount,V.Local.sEnd)
+'		V.Local.sSql.Set("Select GCG_IT_Part_Tracking.IT_Part_Num,GCG_IT_Part_Tracking.IT_Tag_ID,GCG_IT_Part_Tracking.Employee_Num,Inventory_MSTR.Description,Extra_Text.Text_Line1,Inventory_MST2.Description_2 From GCG_IT_Part_Tracking inner Join Inventory_MSTR on GCG_IT_Part_Tracking.IT_Part_Num=Inventory_MSTR.Part Join Extra_Text on GCG_IT_Part_Tracking.IT_Part_Num=Extra_Text.Part Join Inventory_MST2 on GCG_IT_Part_Tracking.IT_Part_Num=Inventory_MST2.Part Where GCG_IT_Part_Tracking.Employee_Num BETWEEN'")
+		'Set the SQL Query.
+		V.Local.sSql.Set("Select GCG_3944_Part_Track.IT_Part_Num, GCG_3944_Part_Track.IT_Tag_ID, GCG_3944_Part_Track.Employee_Num, Extra_Text.Text_Line1 From GCG_3944_Part_Track Join Extra_Text on GCG_3944_Part_Track.IT_Part_Num=Extra_Text.Part where GCG_3944_Part_Track.Employee_Num Between '")
+		F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sStart,"' and '",V.Local.sEnd,"'",V.Local.sSql)
+		'Open connection to the record set.
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+			'Loop through the records till end of file is reached.
+			F.Intrinsic.Control.DoUntil(V.ODBC.conx!rst.EOF,=,True)
+				'Check to see if the UDT has values in it.
+				F.Intrinsic.Control.If(V.uGlobal.uAssign.UBound,=,-1)
+					'No values then redim
+					V.uGlobal.uAssign.Redim(0,0)
+				'Else add to the UDT
+				F.Intrinsic.Control.Else
+					F.Intrinsic.Math.Add(V.uGlobal.uAssign.UBound,1,V.Local.iCount2)
+					V.uGlobal.uAssign.RedimPreserve(0,V.Local.iCount2)
+				F.Intrinsic.Control.EndIf
+				'Set the Part Number of the udt
+				V.uGlobal.uAssign(v.Local.iCount2)!sPartNum.Set(V.ODBC.conx!rst.FieldVal!IT_Part_Num)
+				'Set the Tag ID of the udt
+				V.uGlobal.uAssign(v.Local.iCount2)!sTagID.Set(V.ODBC.conx!rst.FieldVal!IT_Tag_ID)
+				'Set the Employee Number
+				V.uGlobal.uAssign(v.Local.iCount2)!sEmp.Set(V.ODBC.conx!rst.FieldVal!Employee_Num)
+				'Set the product key
+				V.uGlobal.uAssign(v.Local.iCount2)!sProdKey.Set(V.ODBC.conx!rst.FieldVal!Text_Line1)
+'				move to the next record.
+				F.ODBC.conx!rst.MoveNext
+			'Loop through the record
+			F.Intrinsic.Control.Loop
+		'Close Connection.
+		F.ODBC.conx!rst.Close
+	'Move to the next row of the flexgrid.
+	F.Intrinsic.Control.Next(V.Local.iCount)
+	'Set count to 0
+	V.Local.iCount.Set(0)
+	'Loop through the udt
+	F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uAssign.UBound,1)
+		'Set the Part Number
+		V.Local.sPart.Set(V.uGlobal.uAssign(v.Local.iCount)!sPartNum.Trim)
+		'Set the SQL Query
+		V.Local.sSql.Set("Select Inventory_MSTR.Description, Inventory_MST2.Description_2 From Inventory_MSTR Join Inventory_MST2 on Inventory_MSTR.Part = Inventory_MST2.Part where Inventory_MSTR.Part = '")
+		F.Intrinsic.String.Concat(V.Local.sSql,V.Local.sPart.Trim,"'",V.Local.sSql)
+		'Open connnection to the record set.
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+		'Set the Make of the udt.
+		V.uGlobal.uAssign(v.Local.iCount)!sMake.Set(V.ODBC.conx!rst.FieldVal!Description)
+		'Set the Model of the udt.
+		V.uGlobal.uAssign(v.Local.iCount)!sModel.Set(V.ODBC.conx!rst.FieldVal!Description_2)
+		'Close Connection.
+		F.ODBC.conx!rst.Close
+	'Move to next row of the udt.
+	F.Intrinsic.Control.Next(V.Local.iCount)
+'End if.
+F.Intrinsic.Control.EndIf
+'set the field reference of the udt.
+F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uAssign!iBIRunID,"BIRunID")
+'Set the BIRUNID
+F.Intrinsic.Variable.UDTSetMemberValue(V.uGlobal.uAssign!iBIRunID,V.Global.iBIRunID)
+'copy the udt to the UITEmp udt.
+F.Intrinsic.Variable.UDTCopy(V.uGlobal.uAssign,V.uGlobal.uITEmp,False)
+
+'Set SQL Query to the table holding the report information.
+V.Local.sSql.Set("Select * From GCG_3944_Emp_Rep")
+'open connection to the record
+F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+'Save the udt to the record.
+F.Intrinsic.Variable.SaveUDTToRecordset("conx","rst","v.uGlobal.uITEmp")
+'Close the recordset.
+F.ODBC.conx!rst.Close
+'Call Subroutine callbi.
+F.Intrinsic.Control.CallSub(Callbi)
+'Call subroutine form1_unload.
+F.Intrinsic.Control.CallSub(Form1_unload)
+'Exit Sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmdprint_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdprint_click.end
+
+Program.Sub.BuildStyle.Start
+F.Intrinsic.Control.SetErrorHandler("BuildStyle_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Sets the Flexgrid so there will be 3 Columns with 2 Rows.  One of the Rows will be fixed so that it can contain the titles.
+Gui.Form1.gsfgEmp.Cols(3)
+Gui.Form1.gsfgEmp.Rows(2)
+Gui.Form1.gsfgEmp.FixedRows(1)
+'Set the amount of space each column will take in the flexgrid.
+Gui.Form1.gsfgEmp.SetColumnPercentages(".40:.40:.20")
+
+'Build Style
+'Column 0
+'Style 1
+Gui.Form1.gsfgEmp.BuildStyle(1,0,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,0,"Fontstyle","Bold",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,0,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgEmp.BuildStyle(2,0,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(2,0,"Format","Alignment",2)
+
+'Column 1
+'Style 1
+Gui.Form1.gsfgEmp.BuildStyle(1,1,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,1,"Fontstyle","Bold",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,1,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgEmp.BuildStyle(2,1,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(2,1,"Format","Alignment",2)
+
+'Column 2
+'Style 1
+Gui.Form1.gsfgEmp.BuildStyle(1,2,"Type","Locked",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,2,"Fontstyle","Bold",True)
+Gui.Form1.gsfgEmp.BuildStyle(1,2,"Format","Alignment",4)
+
+'Style 2
+Gui.Form1.gsfgEmp.BuildStyle(2,2,"Format","Alignment",4)
+Gui.Form1.gsfgEmp.BuildStyle(2,2,"Type","Checkbox",True)
+
+'Applies Style 1 to the first row
+Gui.Form1.gsfgEmp.ApplyStyle(0,1)
+'Applies Style 2 to the second row.
+Gui.Form1.gsfgEmp.ApplyStyle(1,2)
+
+'Set the Text for the header row of the flexgrid.
+Gui.Form1.gsfgEmp.TextMatrix(0,0,"Starting Employee")
+Gui.Form1.gsfgEmp.TextMatrix(1,0,"Ending Employee")
+Gui.Form1.gsfgEmp.TextMatrix(2,0,"Remove")
+'Exit Sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("BuildStyle_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.BuildStyle.End
+
+program.sub.cmdadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to hold the number of rows on the flexgrid
+V.Local.iRow.Declare(Long)
+
+'Set the variable with number of rows in the flexgrid
+V.Local.iRow.Set(V.Screen.Form1!gsfgEmp.Rows)
+'Subtract 1 from the number of rows.
+F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+'Check to see if the starting employee text box is not empty.
+F.Intrinsic.Control.If(V.Screen.Form1!txtSEmp.Text,!=,"")
+	'Place the starting employee number on the flexgrid.
+	Gui.Form1.gsfgEmp.TextMatrix(0,V.Local.iRow,V.Screen.Form1!txtSEmp.Text)
+	'Place the ending employee number on the flexgrid.
+	Gui.Form1.gsfgEmp.TextMatrix(1,V.Local.iRow,V.Screen.Form1!txtEEmp.Text)
+	'Apply the style to the row.
+	Gui.Form1.gsfgEmp.ApplyStyle(V.Local.iRow,2)
+	'Add 2 to the number of rows in the flexgrid.
+	F.Intrinsic.Math.Add(V.Local.iRow,2,V.Local.iRow)
+	'update the flexgrid
+	Gui.Form1.gsfgEmp.Rows(V.Local.iRow)
+'End if.
+F.Intrinsic.Control.EndIf
+
+'Empty the starting employee text box.
+Gui.Form1.txtSEmp.Text("")
+'Empty the ending employee text box.
+Gui.Form1.txtEEmp.Text("")
+'Exit sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmdadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdadd_click.end
+
+program.sub.cmddelete_click.start
+F.Intrinsic.Control.SetErrorHandler("cmddelete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to hold value of the check box.
+V.Local.sCheck.Declare(String)
+'Variable to hold the number of rows on the flexgrid.
+V.Local.iRow.Declare(Long)
+'Variable to hold the loop count.
+V.Local.ICount.Declare(Long)
+
+'Set the variable with the number of rows on the flexgrid.
+V.Local.iRow.Set(V.Screen.Form1!gsfgEmp.Rows)
+'subtract the header and bottom blank row from the count.
+F.Intrinsic.Math.Sub(V.Local.iRow,2,V.Local.iRow)
+
+'Loop through the flex grid.
+F.Intrinsic.Control.For(V.Local.ICount,1,V.Local.iRow,1)
+	'Save the value of the check box to the variable.
+	Gui.Form1.gsfgEmp.GetTextMatrix(2,V.Local.ICount,V.Local.sCheck)
+	'Check to see if the box is checked or not.(1 yes, 0 no)
+	F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+		'if it is checked remove the style from tha row.
+		Gui.Form1.gsfgEmp.RemoveStyle(V.Local.ICount)
+		'Subtract 1 from the loop count.
+		F.Intrinsic.Math.Sub(V.Local.ICount,1,V.Local.ICount)
+		'Delete the row from the flexgrid.
+		Gui.Form1.gsfgEmp.DeleteRow(V.Local.ICount)
+		'Subtract 1 from the row count.
+		F.Intrinsic.Math.Sub(V.Local.iRow,1,V.Local.iRow)
+	'End if.
+	F.Intrinsic.Control.EndIf
+'Go to the next row.
+F.Intrinsic.Control.Next(V.Local.ICount)
+
+'Exit sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("cmddelete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmddelete_click.end
+
+program.sub.chkallemp_click.start
+F.Intrinsic.Control.SetErrorHandler("chkallemp_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable to used to tell if the checkbox was checked.
+V.Local.sCheck.Declare(String)
+'Get the value and set it.
+V.Local.sCheck.Set(V.Screen.Form1!chkAllEmp.Value)
+'Check if it is true (or 1)
+F.Intrinsic.Control.If(V.Local.sCheck,=,1)
+	'if the box is checked disable the ending employee textbox
+	Gui.Form1.txtEEmp.Enabled(False)
+	'Disable the starting employee textbox
+	Gui.Form1.txtSEmp.Enabled(False)
+	'Disable the flexgrid
+	Gui.Form1.gsfgEmp.Visible(False)
+F.Intrinsic.Control.Else
+	'Else if the box is not checked enable the ending employee textbox
+	Gui.Form1.txtEEmp.Enabled(True)
+	'Enable the starting employee textbox
+	Gui.Form1.txtSEmp.Enabled(True)
+	'Enable the flexgrid
+	Gui.Form1.gsfgEmp.Visible(True)
+'End If
+F.Intrinsic.Control.EndIf
+'Exit Sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("chkallemp_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.chkallemp_click.end
+
+Program.Sub.CallBI.Start
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Variable will hold the string "BIRUNID"
+V.Local.sParam.Declare(String)
+'Variable will hold the birunid number.
+V.Local.sVal.Declare(String)
+
+'Stop the logging
+F.Global.BI.StopLogging(V.Global.iBILogID)
+'Set the parameters.
+V.Local.sParam.Set("BIRUNID")
+V.Local.sVal.Set(V.Global.iBIRunID)
+'Run the report
+F.Global.BI.RunReportPreProcessor(V.Global.iBIRunID,V.Global.iBILogID,V.Local.sParam,V.Local.sVal,"",-1,True,"",-1,"",-1,"","",V.Global.iBIRunID)
+'Exit sub.
+F.Intrinsic.Control.ExitSub
+
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3944_IT_Assign_Rep.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CallBI.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_IT_Assign_Rep$}$SKT$}$4/29/2014
+Program.Sub.Comments.End
+
